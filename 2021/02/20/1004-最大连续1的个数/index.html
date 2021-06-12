@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>1004.最大连续1的个数 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。
+返回仅包含 1 的最长（连续）子数组的长度。">
+  
+  <meta name="description" content="题目给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1004.最大连续1的个数">
+<meta property="og:url" content="http://example.com/2021/02/20/1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-20T12:09:23.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.124Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/02/20/1004-最大连续1的个数/">
+  <time datetime="2021-02-20T12:09:23.000Z">
+    2021-02-20
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">1004.最大连续1的个数</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。</p>
+<p>返回仅包含 1 的最长（连续）子数组的长度。</p>
+<span id="more"></span>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1,1,1,0,0,0,1,1,1,1,0], K = 2</span><br><span class="line">输出：6</span><br><span class="line">解释： </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 6。</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<ol>
+<li>1 &lt;= A.length &lt;= 20000</li>
+<li>0 &lt;= K &lt;= A.length</li>
+<li>A[i] 为 0 或 1</li>
+</ol>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>滑动窗口，每次移动right指针时判断当前值是否为1<ol>
+<li>若当前值为1，更新最大长度</li>
+<li>若当前值为0，判断K的值，若K值大于0，则更新K值和最大长度；若K值为0，则更新左指针left</li>
+</ol>
+</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestOnes</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> maxLen = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(right &lt; A.length) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[right] == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span>(K == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 始终保持窗口内只有K个0</span></span><br><span class="line">            <span class="keyword">while</span>(A[left++] == <span class="number">1</span>);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            K--;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxLen = Math.max(maxLen, right - left + <span class="number">1</span>);</span><br><span class="line">        right++;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> maxLen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

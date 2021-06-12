@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>992.K个不同整数的子数组 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目给定一个正整数数组 A，如果 A 的某个子数组中不同整数的个数恰好为 K，则称 A 的这个连续、不一定不同的子数组为好子数组。
+（例如，[1,2,3,1,2] 中有 3 个不同的整数：1，2，以及 3。）
+返回 A 中好子数组的数目。">
+  
+  <meta name="description" content="题目给定一个正整数数组 A，如果 A 的某个子数组中不同整数的个数恰好为 K，则称 A 的这个连续、不一定不同的子数组为好子数组。 （例如，[1,2,3,1,2] 中有 3 个不同的整数：1，2，以及 3。） 返回 A 中好子数组的数目。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="992.K个不同整数的子数组">
+<meta property="og:url" content="http://example.com/2021/02/10/992-K%E4%B8%AA%E4%B8%8D%E5%90%8C%E6%95%B4%E6%95%B0%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目给定一个正整数数组 A，如果 A 的某个子数组中不同整数的个数恰好为 K，则称 A 的这个连续、不一定不同的子数组为好子数组。 （例如，[1,2,3,1,2] 中有 3 个不同的整数：1，2，以及 3。） 返回 A 中好子数组的数目。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-10T06:37:56.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.140Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/02/10/992-K个不同整数的子数组/">
+  <time datetime="2021-02-10T06:37:56.000Z">
+    2021-02-10
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">992.K个不同整数的子数组</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个正整数数组 A，如果 A 的某个子数组中不同整数的个数恰好为 K，则称 A 的这个连续、不一定不同的子数组为好子数组。</p>
+<p>（例如，[1,2,3,1,2] 中有 3 个不同的整数：1，2，以及 3。）</p>
+<p>返回 A 中好子数组的数目。</p>
+<span id="more"></span>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1,2,1,2,3], K = 2</span><br><span class="line">输出：7</span><br><span class="line">解释：恰好由 2 个不同整数组成的子数组：[1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<ol>
+<li>1 &lt;= A.length &lt;= 20000</li>
+<li>1 &lt;= A[i] &lt;= A.length</li>
+<li>1 &lt;= K &lt;= A.length</li>
+</ol>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>恰好为K个不同整数：最多包含K个不同整数-最多包含K-1个整数</li>
+<li>双指针求子数组中包含最多K个整数的个数</li>
+<li>用一个变量count来记录区间[left, right]内的不同整数的个数<ol>
+<li>若count&gt;k：则左指针右移，并将哈希表内A[left]对应的次数减1，当A[left]的次数为1时,count减1，此时区间内无A[left]这个整数</li>
+</ol>
+</li>
+<li>对于res += right - left + 1：对于区间[left, right]其最多含有K个不同的整数，它包含以right为右端点的子数组的个数为：right-left+1。例如：[1, 2, 1, 2] k=2代表包含2个不同整数的子数组有4个，left = 0, right = 3。分别为：[2], [2, 1], [2, 1, 2], [2, 1, 2, 1]</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysWithKDistinct</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//恰好为 K 可以变为  最多 为 k 个 减去 最多为k - 1个</span></span><br><span class="line">        <span class="keyword">return</span> subarraysWithMostK(A, K) - subarraysWithMostK(A, K - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysWithMostK</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      Map&lt;Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      <span class="keyword">while</span>(right &lt; A.length()) &#123;</span><br><span class="line">        map.put(A[right], map.getOrDefault(A[right], <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(map.get(A[right++]) == <span class="number">1</span>) &#123;</span><br><span class="line">          count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(count &gt; k) &#123;</span><br><span class="line">          map.put(A[left], map.get(A[left])-<span class="number">1</span>);</span><br><span class="line">          <span class="keyword">if</span>(map.get(A[left] == <span class="number">0</span>)) &#123;</span><br><span class="line">            count--;</span><br><span class="line">          &#125;</span><br><span class="line">          left++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        res += right - left + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

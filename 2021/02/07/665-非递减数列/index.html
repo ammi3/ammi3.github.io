@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>665.非递减数列 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。
+我们是这样定义一个非递减数列的： 对于数组中所有的 i (0 &amp;lt;= i &amp;lt;= n-2)，总满足 nums[i] &amp;lt;= nums[i + 1]。">
+  
+  <meta name="description" content="题目给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。 我们是这样定义一个非递减数列的： 对于数组中所有的 i (0 &lt;&#x3D; i &lt;&#x3D; n-2)，总满足 nums[i] &lt;&#x3D; nums[i + 1]。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="665.非递减数列">
+<meta property="og:url" content="http://example.com/2021/02/07/665-%E9%9D%9E%E9%80%92%E5%87%8F%E6%95%B0%E5%88%97/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。 我们是这样定义一个非递减数列的： 对于数组中所有的 i (0 &lt;&#x3D; i &lt;&#x3D; n-2)，总满足 nums[i] &lt;&#x3D; nums[i + 1]。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-07T02:44:18.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.133Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/02/07/665-非递减数列/">
+  <time datetime="2021-02-07T02:44:18.000Z">
+    2021-02-07
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">665.非递减数列</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。</p>
+<p>我们是这样定义一个非递减数列的： 对于数组中所有的 i (0 &lt;= i &lt;= n-2)，总满足 nums[i] &lt;= nums[i + 1]。</p>
+<span id="more"></span>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [4,2,3]</span><br><span class="line">输出: true</span><br><span class="line">解释: 你可以通过把第一个4变成1来使得它成为一个非递减数列。</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<ol>
+<li>1 &lt;= n &lt;= 10 ^ 4</li>
+<li>10 ^ 5 &lt;= nums[i] &lt;= 10 ^ 5</li>
+</ol>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>最多改变1个元素情况下，使该数组变成一个非递减数列</li>
+<li>遍历数组，若<code>nums[i] &gt; nums[i+1]</code>，需要改变的次数count+1，若要使该数组此时局部非递减，有两种方法<ol>
+<li>减小nums[i]，减小的同时要始终小于等于nums[i+1]之后的元素</li>
+<li>增大nums[i+1]，增大的同时要始终大于等于nums[i]之前的元素</li>
+</ol>
+</li>
+<li>分类讨论<ol>
+<li>先决条件nums[i] &gt; nums[i+1]</li>
+<li>特殊情况：i = 0时，与nums[0]相邻的只有一个元素nums[i+1]，所以此时无论增大nums[i+1]或者减小nums[i]都可以</li>
+<li>一般情况：此时与nums[i]相邻的有两个元素，nums[i-1], nums[i+1]<ol>
+<li>nums[i-1] &lt; nums[i]：此时nums[i-1], nums[i]局部非递减，只需增大nums[i+1]，使其满足nums[i+1] &gt; nums[i]即可。由于增大nums[i+1]要始终大于nums[i]之前的元素，所以最佳选择是增大到nums[i]。当增大nums[i+1]结束后需要判断此时的序列时候局部非递减，所以判断nums[i-1]与nums[i+1]的关系</li>
+<li>nums[i-1] &gt; nums[i]：此时nums[i-1], nums[i], nums[i+1]递减，肯定返回false；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkPossibility</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>]) &#123;</span><br><span class="line">          count++;</span><br><span class="line">          <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i-<span class="number">1</span>] &gt; nums[i+<span class="number">1</span>]) nums[i+<span class="number">1</span>] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> count &lt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

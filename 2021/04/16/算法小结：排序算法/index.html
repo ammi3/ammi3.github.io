@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>算法小结：排序算法 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="1. 初级排序算法">
+  
+  <meta name="description" content="1. 初级排序算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法小结：排序算法">
+<meta property="og:url" content="http://example.com/2021/04/16/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%EF%BC%9A%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="1. 初级排序算法">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-16T14:31:40.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.146Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/04/16/算法小结：排序算法/">
+  <time datetime="2021-04-16T14:31:40.000Z">
+    2021-04-16
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">算法小结：排序算法</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="1-初级排序算法"><a href="#1-初级排序算法" class="headerlink" title="1. 初级排序算法"></a>1. 初级排序算法</h3><span id="more"></span>
+<h4 id="1-1-选择排序"><a href="#1-1-选择排序" class="headerlink" title="1.1 选择排序"></a>1.1 选择排序</h4><blockquote>
+<p>步骤：首先，找到数组中最小的那个元素，将其和数组的第一个元素交换位置；其次，在剩下的元素中找到最小的元素，将其和数组的第二个元素交换位置，直至将整个数组排序。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i != minIndex)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[minIndex];</span><br><span class="line">            arr[minIndex] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>｜分析</p>
+<ol>
+<li><p>每次交换都能够排定一个元素，因此交换的总次数为N，所以该算法的<strong>时间效率取决于比较的次数</strong></p>
+</li>
+<li><p>我们假设一个长度为N的数组，求其选择排序大约需要的比较次数与交换次数</p>
+<ol>
+<li><p>由于选择排序需要对当前元素<strong>与其之后的所有元素进行比较</strong>并与最小值进行交换。</p>
+</li>
+<li><p>故：第一个元素需要比较N-1次，交换1次；第二个元素需要比较N-2次，交换一次…</p>
+</li>
+<li><p>即：总共有N^2次比较，N次交换<br>$$<br>(N-1)+(N-2)+(N-3)+…+2+1=N(N-1)/2 \approx N^2/2<br>$$</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>｜总结</p>
+<ol>
+<li>运行时间和输入无关。第一次的扫描整个数组并不能为下一遍扫描提供有用的信息。</li>
+<li>数据移动是最少的。每次交换都会改变两个数组元素的值，确定一个位置。交换次数与数组大小成线性关系。</li>
+</ol>
+<h4 id="1-2-插入排序"><a href="#1-2-插入排序" class="headerlink" title="1.2 插入排序"></a>1.2 插入排序</h4><p>插入排序与选择排序一样，其<strong>当前索引左边的所有元素都是有序的</strong>。但在插入排序中它们的最终位置是不确定的，若按照从小到大排序，那么可能为了给比其更小的元素让出位置，它们还有被移动的可能。</p>
+<blockquote>
+<p>步骤：对于当前元素arr[i]，将它与它之前的所有元素arr[0:i]相比较，直到碰到<strong>第一个</strong>小于当前元素的元素arr[j]，交换位置。此时arr[0:i]局部有序。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; arr[j] &lt; arr[j - <span class="number">1</span>]; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[j];</span><br><span class="line">            arr[j] = arr[j - <span class="number">1</span>];</span><br><span class="line">            arr[j - <span class="number">1</span>] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>｜分析</p>
+<ol>
+<li><p>对于当前元素arr[i]，若其左侧元素小于arr[i]，则表示序列arr[0:i]局部有序，不用交换。</p>
+</li>
+<li><p>假设数组长度为N，求平均情况下需要的比较次数与交换次数，最坏情况与最好情况呢？</p>
+</li>
+<li><p>最好情况。</p>
+<ol>
+<li>即：需要排序的顺序与给定的顺序一样</li>
+<li>交换次数：0次</li>
+<li>比较次数：N-1次，对于arr[1:N]的每一个元素都要进行一次比较</li>
+</ol>
+</li>
+<li><p>最坏情况</p>
+<ol>
+<li><p>即：需要排序的顺序与给定的顺序正好相反</p>
+</li>
+<li><p>比较次数：N^2/2次<br>$$<br>1+2+…+(N-2)+(N-1)=N(N-1)/2 \approx N^2/2<br>$$</p>
+</li>
+<li><p>交换次数：N^2/2次<br>$$<br>(N-1)+(N-2)+(N-3)+…+2+1=N(N-1)/2 \approx N^2/2<br>$$</p>
+</li>
+</ol>
+</li>
+<li><p>平均情况</p>
+<ol>
+<li>比较次数：N^2/4次</li>
+<li>交换次数：N^2/4次</li>
+</ol>
+</li>
+</ol>
+<p>｜总结</p>
+<ol>
+<li>运行时间与输入有关</li>
+<li>使用插入排序对<strong>部分有序的数组</strong>进行排序效率很高</li>
+</ol>
+<h4 id="1-3-希尔排序"><a href="#1-3-希尔排序" class="headerlink" title="1.3 希尔排序"></a>1.3 希尔排序</h4><p>希尔排序基于插入排序。由于插入排序对于大规模的乱序数组效率很慢，因为它只能够交换相邻元素，元素只能从数组的一端一步步地移动到另外一端。</p>
+<blockquote>
+<ol>
+<li>将该数组分为若干子序列</li>
+<li>将这些子序列进行插入排序</li>
+<li>减少每个子序列中元素的距离，直至距离为1</li>
+</ol>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (h &lt; n / <span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        h = <span class="number">3</span> * h + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (h &gt;= <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= h &amp;&amp; arr[j] &lt; arr[j - h]; j -= h)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j - h];</span><br><span class="line">                arr[j - h] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        h = h / <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>｜分析</p>
+<ol>
+<li>希尔排序更加高效地原因是其权衡了子数组的规模和有序性。排序初期，各个子数组长度很短，而排序之后子数组都部分有序，这两种情况很适合插入排序</li>
+</ol>
+<p>｜总结</p>
+<h3 id="2-归并排序"><a href="#2-归并排序" class="headerlink" title="2. 归并排序"></a>2. 归并排序</h3><p>要将一个数组排序，可以先将它分成两半分别进行排序</p>
+<h3 id="3-快速排序"><a href="#3-快速排序" class="headerlink" title="3. 快速排序"></a>3. 快速排序</h3><h3 id="4-应用"><a href="#4-应用" class="headerlink" title="4. 应用"></a>4. 应用</h3>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

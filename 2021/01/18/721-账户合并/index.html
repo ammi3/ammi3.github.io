@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>721.账户合并 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目给定一个列表 accounts，每个元素 accounts[i] 是一个字符串列表，其中第一个元素 accounts[i][0] 是 名称 (name)，其余元素是 emails 表示该账户的邮箱地址。
+现在，我们想合并这些账户。如果两个账户都有一些共同的邮箱地址，则两个账户必定属于同一个人。请注意，即使两个账户具有相同的名称，它们也可能属于不同的人，因为人们可能具有相同的名称。一个人最初可以">
+  
+  <meta name="description" content="题目给定一个列表 accounts，每个元素 accounts[i] 是一个字符串列表，其中第一个元素 accounts[i][0] 是 名称 (name)，其余元素是 emails 表示该账户的邮箱地址。 现在，我们想合并这些账户。如果两个账户都有一些共同的邮箱地址，则两个账户必定属于同一个人。请注意，即使两个账户具有相同的名称，它们也可能属于不同的人，因为人们可能具有相同的名称。一个人最初可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="721.账户合并">
+<meta property="og:url" content="http://example.com/2021/01/18/721-%E8%B4%A6%E6%88%B7%E5%90%88%E5%B9%B6/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目给定一个列表 accounts，每个元素 accounts[i] 是一个字符串列表，其中第一个元素 accounts[i][0] 是 名称 (name)，其余元素是 emails 表示该账户的邮箱地址。 现在，我们想合并这些账户。如果两个账户都有一些共同的邮箱地址，则两个账户必定属于同一个人。请注意，即使两个账户具有相同的名称，它们也可能属于不同的人，因为人们可能具有相同的名称。一个人最初可以">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-18T12:13:50.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.135Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/01/18/721-账户合并/">
+  <time datetime="2021-01-18T12:13:50.000Z">
+    2021-01-18
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">721.账户合并</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个列表 accounts，每个元素 accounts[i] 是一个字符串列表，其中第一个元素 accounts[i][0] 是 名称 (name)，其余元素是 emails 表示该账户的邮箱地址。</p>
+<p>现在，我们想合并这些账户。如果两个账户都有一些共同的邮箱地址，则两个账户必定属于同一个人。请注意，即使两个账户具有相同的名称，它们也可能属于不同的人，因为人们可能具有相同的名称。一个人最初可以拥有任意数量的账户，但其所有账户都具有相同的名称。</p>
+<p>合并账户后，按以下格式返回账户：每个账户的第一个元素是名称，其余元素是按字符 ASCII 顺序排列的邮箱地址。账户本身可以以任意顺序返回。</p>
+<span id="more"></span> 
+
+<p>实例1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">accounts = [[&quot;John&quot;, &quot;johnsmith@mail.com&quot;, &quot;john00@mail.com&quot;], [&quot;John&quot;, &quot;johnnybravo@mail.com&quot;], [&quot;John&quot;, &quot;johnsmith@mail.com&quot;, &quot;john_newyork@mail.com&quot;], [&quot;Mary&quot;, &quot;mary@mail.com&quot;]]</span><br><span class="line">输出：</span><br><span class="line">[[&quot;John&quot;, &#x27;john00@mail.com&#x27;, &#x27;john_newyork@mail.com&#x27;, &#x27;johnsmith@mail.com&#x27;],  [&quot;John&quot;, &quot;johnnybravo@mail.com&quot;], [&quot;Mary&quot;, &quot;mary@mail.com&quot;]]</span><br><span class="line">解释：</span><br><span class="line">第一个和第三个 John 是同一个人，因为他们有共同的邮箱地址 &quot;johnsmith@mail.com&quot;。 </span><br><span class="line">第二个 John 和 Mary 是不同的人，因为他们的邮箱地址没有被其他帐户使用。</span><br><span class="line">可以以任何顺序返回这些列表，例如答案 [[&#x27;Mary&#x27;，&#x27;mary@mail.com&#x27;]，[&#x27;John&#x27;，&#x27;johnnybravo@mail.com&#x27;]，</span><br><span class="line">[&#x27;John&#x27;，&#x27;john00@mail.com&#x27;，&#x27;john_newyork@mail.com&#x27;，&#x27;johnsmith@mail.com&#x27;]] 也是正确的。</span><br></pre></td></tr></table></figure>
+
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>相同邮箱的账户一定属于同一个人，相同名称的账户不一定属于同一个人。故使用邮箱来判断是否为同一个人</li>
+<li>初始化每一个账户为1的连通分量</li>
+<li>遍历每个账户下的邮箱，判断该邮箱是否在其他账户下出现过<ol>
+<li>若出现过，则表示此邮箱对应的两个账户属于同一个人<code>（例如邮箱A，邮箱B）</code>，开始合并邮箱A，邮箱B的连通分量</li>
+<li>若未出现过，继续</li>
+</ol>
+</li>
+<li>遍历所有的连通分量，将所有连通分量内的账户的所有邮箱合并</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; accountsMerge(List&lt;List&lt;String&gt;&gt; accounts) &#123;</span><br><span class="line">        Map&lt;String, Integer&gt; emailToId = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = accounts.size();</span><br><span class="line">        Unionfind union = <span class="keyword">new</span> Unionfind(n);</span><br><span class="line">        <span class="comment">// 对每个账户下的邮箱进行遍历</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = accounts.get(i).size();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; size; j++) &#123;</span><br><span class="line">                String curEmail = accounts.get(i).get(j);</span><br><span class="line">                <span class="comment">// 未出现过则添加</span></span><br><span class="line">                <span class="keyword">if</span>(!emailToId.containsKey(curEmail)) &#123;</span><br><span class="line">                    emailToId.put(curEmail, i);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 合并连通分量</span></span><br><span class="line">                    union.unionfind(i, emailToId.get(curEmail))</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// -----------此时每组连通分量就是一个人拥有的全部账号----------------</span></span><br><span class="line">        <span class="comment">// 由于emailToId表示的是邮箱与id之间的关系，所以即使在同一个连通域内，其对应的id也可能不相同，所以要合并将同一连通域内的所有邮箱合并到一个id上</span></span><br><span class="line">        Map&lt;Integer, List&lt;String&gt;&gt; idToEmails = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String, Integer&gt; entry : emailToId.entrySet()) &#123;</span><br><span class="line">            <span class="keyword">int</span> id = union.find(entry.getValue());</span><br><span class="line">            List&lt;String&gt; emails = idToEmails.getOrDefault(id, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">            emails.add(entry.getKey());</span><br><span class="line">            idToEmails.put(id, emails);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ----------此时每个id对应的就是一个人所拥有的全部账户--------------</span></span><br><span class="line">        <span class="comment">// 这是只需要将id与name相对应即可</span></span><br><span class="line">        List&lt;List&lt;String&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer, List&lt;String&gt;&gt; entry : idToEmails.entrySet()) &#123;</span><br><span class="line">            List&lt;String&gt; emails = entry.getValue();</span><br><span class="line">            Collection.sort(emails);</span><br><span class="line">            List&lt;String&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            temp.add(accounts.get(entry.getKey()).get(<span class="number">0</span>));</span><br><span class="line">            temp.addAll(emails);</span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Unionfind</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] parents;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Unionfind</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                parents[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并连通分量</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">unionfind</span><span class="params">(<span class="keyword">int</span> index1, <span class="keyword">int</span> index2)</span> </span>&#123;</span><br><span class="line">            parents[find(index2)] = find(index1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 找祖先节点</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(index != parents[index]) &#123;</span><br><span class="line">                <span class="keyword">return</span> find(parents[index]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

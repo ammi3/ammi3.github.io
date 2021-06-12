@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>操作系统：处理机调度 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="1. 处理机调度
+多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
+  
+  <meta name="description" content="1. 处理机调度 多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统：处理机调度">
+<meta property="og:url" content="http://example.com/2021/04/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="1. 处理机调度 多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419084641.png">
+<meta property="article:published_time" content="2021-04-10T05:30:04.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.145Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419084641.png">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/04/10/操作系统：处理机调度/">
+  <time datetime="2021-04-10T05:30:04.000Z">
+    2021-04-10
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">操作系统：处理机调度</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="1-处理机调度"><a href="#1-处理机调度" class="headerlink" title="1. 处理机调度"></a>1. 处理机调度</h3><blockquote>
+<p>多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4 id="1-1-高级调度"><a href="#1-1-高级调度" class="headerlink" title="1.1 高级调度"></a>1.1 高级调度</h4><blockquote>
+<p>高级调度：又称作业调度或长程调度，主要功能是将<strong>外存上处于后备队列的作业调入内存</strong>，其调度对象是<strong>作业</strong></p>
+</blockquote>
+<p>作业：作业包含了程序，数据以及作业说明书，系统是根据该说明书来对程序的运行进行控制的。</p>
+<p>作业控制块JCB：目的是为了管理和调度作业<code>(和PCB一样的道理)</code>，其保存了系统对作业进行管理和调度所需的全部信息，是作业在系统中存在的标志</p>
+<p>作业调度：根据作业控制块的信息，审查系统能否满足用户作业的资源需求，并按照一定算法，从外存的后备队列中选取作业调入内存，为其创建进程，分配所需要的资源，然后再将新创建的进程插入就绪队列</p>
+<h4 id="1-2-低级调度"><a href="#1-2-低级调度" class="headerlink" title="1. 2 低级调度"></a>1. 2 低级调度</h4><blockquote>
+<p>低级调度：又称进程调度或短程调度，所调度的对象是<strong>进程</strong>。</p>
+<p>低级调度用于决定就绪队列中的哪个进程应获得处理机资源</p>
+</blockquote>
+<p>｜低级调度的功能</p>
+<ol>
+<li>保存处理机的现场信息。处理机在调度时，首先要保存当前进程的处理机现场信息，以便之后恢复</li>
+<li>按某种算法选取进程。调度算法</li>
+<li>把处理器分配给进程。为选中的进行恢复处理机现场，将PCB控制块中的有关信息装入处理机</li>
+</ol>
+<p>｜低级调度三个基本机制</p>
+<ol>
+<li>排队器。系统中的所有就绪进程都应按照一定的方式进行排序</li>
+<li>分派器。取出选中进程，进行上下文切换，后分配处理机资源</li>
+<li>上下文切换。对处理机进行切换时，需要进行<strong>两对上下文切换</strong>：第一对：系统需要保存当前进行的上下文，并装入分派程序的上下文；第二对：移出分派程序，把新选中进程的CPU现场信息装入处理机</li>
+</ol>
+<p>｜进程调度的方式</p>
+<ol>
+<li>抢占式。允许调度程序根据某种原则去暂停正在执行的进程，并将处理机重新分配给其他进程<ol>
+<li>优先权原则</li>
+<li>短作业优先原则</li>
+<li>时间片原则</li>
+</ol>
+</li>
+<li>非抢占式。只要该进程正在运行，绝不会因为其他原因而进行中断。采用非抢占式调度方式，可能引起进程调度的因素：<ol>
+<li>进程执行完毕，或因为发生某时间而不能再继续执行</li>
+<li>执行中的进程因提出I/O请求而暂停执行</li>
+<li>在进程通信或同步过程执行1来某种原语操作</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-3-中级调度"><a href="#1-3-中级调度" class="headerlink" title="1.3 中级调度"></a>1.3 中级调度</h4><blockquote>
+<p>中级调度：又称中程调度</p>
+<p>其目的是为了<strong>提高内存利用率和系统吞吐量</strong></p>
+</blockquote>
+<h3 id="2-调度算法的准则"><a href="#2-调度算法的准则" class="headerlink" title="2 调度算法的准则"></a>2 调度算法的准则</h3><h4 id="2-1-面向用户"><a href="#2-1-面向用户" class="headerlink" title="2.1 面向用户"></a>2.1 面向用户</h4><ol>
+<li>周转时间短。作业周转时间：从作业被提交给系统开始，到作业完成为止的这段时间间隔。<ol>
+<li>除此之外，平均周转时间，带权周转时间，平均带权周转时间都需要了解</li>
+</ol>
+</li>
+<li>响应时间快</li>
+<li>截止时间的保证</li>
+<li>优先权</li>
+</ol>
+<h4 id="2-2-面向系统"><a href="#2-2-面向系统" class="headerlink" title="2.2 面向系统"></a>2.2 面向系统</h4><ol>
+<li>系统吞吐量</li>
+<li>处理机利用率好</li>
+<li>各类资源平衡使用</li>
+</ol>
+<h3 id="3-调度算法"><a href="#3-调度算法" class="headerlink" title="3 调度算法"></a>3 调度算法</h3><h4 id="3-1-先来先服务—FCFS"><a href="#3-1-先来先服务—FCFS" class="headerlink" title="3.1 先来先服务—FCFS"></a>3.1 先来先服务—FCFS</h4><blockquote>
+<p>先来先服务即可以用于作业调度，也可以用于进程调度</p>
+</blockquote>
+<ol>
+<li>在作业调度采用该算法时，每次调度都从后备作业队列中选择一个或多个<strong>最先进入该队列的作业</strong>，将它们调入内容，分配资源，创建进程，然后放入就绪队列</li>
+<li>缺点。FCFS算法利于长作业/进程，不利于短作业/进程</li>
+</ol>
+<h4 id="3-2-短作业-进程-优先—SJ-P-F"><a href="#3-2-短作业-进程-优先—SJ-P-F" class="headerlink" title="3.2 短作业(进程)优先—SJ(P)F"></a>3.2 短作业(进程)优先—SJ(P)F</h4><blockquote>
+<p>短作业(进程)优先是止对短作业或短进程优先调度的算法。</p>
+</blockquote>
+<ol>
+<li>短作业优先SJF是从后备队列中选择一个或多个估计运行时间最短的作业，将它们调入内存运行</li>
+<li>短进程优先SPF是从后备队列中选择一个估计运行时间最短的进程，将处理机分配给他，使其一直运行直到执行完成或发生某事件而被阻塞</li>
+<li>缺点。对长作业不利，不能保证紧迫性作业/进程会被及时处理</li>
+</ol>
+<h4 id="3-3-高优先权优先调度"><a href="#3-3-高优先权优先调度" class="headerlink" title="3.3 高优先权优先调度"></a>3.3 高优先权优先调度</h4><p>｜优先权调度算法类型</p>
+<ol>
+<li>非抢占式优先权算法</li>
+<li>抢占式优先权算法。在当前进程执行时，若出现优先权比其更高的进程时，则立即停止当前进程的执行，进行进程的切换</li>
+</ol>
+<p>｜优先权类型</p>
+<ol>
+<li>静态优先权。在创建进程时确认，并且在执行过程中不会改变</li>
+<li>动态优先权。在创建进程时所赋予的优先权可以随进程的推进或等待时间的增加而改变，以便获得更好的性能</li>
+</ol>
+<p>｜高响应比优先算法</p>
+<blockquote>
+<p>短作业优先的不足是长作业的运行不能得到保证。</p>
+<p>如果为每个作业赋予动态的优先权，并使作业的优先权等级随着时间的增加而提高，那么长作业在一定时间后，必然有机会分配到处理机</p>
+</blockquote>
+<p>｜优先权的变化规律<br>$$<br>优先权 = \cfrac{等待时间 + 要求时间}{要求服务时间}<br>$$</p>
+<ol>
+<li>若作业等待时间相同，则服务时间越短，优先权越高。有利于短作业优先</li>
+<li>当要求服务时间相同，等待时间越长，优先权越高。先来先服务</li>
+<li>对于长作业，作业的优先级可以随着等待时间的增加而提高，当等待时间足够长时，便可以获得处理机</li>
+</ol>
+<h4 id="3-4-基于时间片的轮转调度算法"><a href="#3-4-基于时间片的轮转调度算法" class="headerlink" title="3.4 基于时间片的轮转调度算法"></a>3.4 基于时间片的轮转调度算法</h4><p>｜时间片轮转法</p>
+<p>｜基本原理</p>
+<p>早期的时间片轮转法中，系统将所有的就绪进程按先来先服务的原则排成一个队列，每次调度时，把CPU分配给队首进程，并令其执行一个时间片。当执行的时间片用完时，由计时器发出时钟中断请求，调度程序便据此信号来停止该进程的执行，并把处理机分配给就绪队列中新的队首进程，同时也让它执行一个时间片。</p>
+<p>｜多级反馈队列调度法</p>
+<img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419084641.png" style="zoom:50%;" />
+
+<p>｜基本原理</p>
+<ol>
+<li>设置多个就绪队列，并为各个队列赋予不同的优先级。第一个优先级最高，第二个队列次之，其余各队列的优先权逐个降低。该算法赋予各个队列中进程执行时间片的大小也各不相同，优先权高的队列中，为每个进程所规定的执行时间片就越小</li>
+<li>当一个新进程进入内存后，首先将它放入第一队列的末尾，按FCFS原则排队等待调度。当轮到该进程执行时，若它能在该时间片内完成，便可准备撤离系统；如果它在一个时间片结束时尚未完成，调度程序，调度程序便将其转入第二队列的末尾，同样按FCFS原则等待调度…</li>
+<li>仅当第一队列空闲时，调度程序才调度第二队列中的进程运行。若处理机正在第i队列中为某进程服务时，又有新的进程进入优先权较高的队列第1～i-1中，则此时新进程将抢占正在运行进程的处理机</li>
+</ol>
+<h3 id="4-实时调度"><a href="#4-实时调度" class="headerlink" title="4 实时调度"></a>4 实时调度</h3><blockquote>
+<p>实时系统中需要及时反馈，前面的算法不能满足实时系统对调度的要求，故引入实时调度</p>
+</blockquote>
+<h4 id="4-1-实现实时调度的基本条件"><a href="#4-1-实现实时调度的基本条件" class="headerlink" title="4.1 实现实时调度的基本条件"></a>4.1 实现实时调度的基本条件</h4><p>提供以下信息</p>
+<ol>
+<li>就绪时间。任务成为就绪状态的开始时间</li>
+<li>开始时间与截止时间。</li>
+<li>处理时间。任务从开始执行直到完成所需要的时间</li>
+<li>资源要求。执行该任务需要的资源</li>
+<li>优先级。</li>
+</ol>
+<p>采用抢占式的调度机制</p>
+<p>具有快速切换机制</p>
+<h4 id="4-2-常见的实时调度算法"><a href="#4-2-常见的实时调度算法" class="headerlink" title="4.2 常见的实时调度算法"></a>4.2 常见的实时调度算法</h4><p>｜最早截止时间优先算法EDF</p>
+<p>该算法时根据任务的开始截止时间来确定任务的优先级。截止时间越早，其优先级越高。</p>
+<p>该算法要求在系统中保持一个实时任务就绪队列，该队列按各任务截止时间的早晚排序</p>
+<ol>
+<li>非抢占式调度方式</li>
+<li>抢占式调度方式</li>
+</ol>
+<p>｜最低松弛度优先算法LLF</p>
+<p>该算法根据任务的紧急程度来确定任务的优先级。紧急程度越高，其优先级越高</p>
+<p>系统中保持一个按松弛度排序的队列，该队列按松弛度由小到大进行排序</p>
+<p>例如：一个进程需要在200ms内完成，该进程本身的运行时间为100ms，那么其松弛程度为200ms-100ms=100ms</p>
+<h3 id="5-死锁"><a href="#5-死锁" class="headerlink" title="5 死锁"></a>5 死锁</h3><h4 id="5-1-产生死锁的原因"><a href="#5-1-产生死锁的原因" class="headerlink" title="5.1 产生死锁的原因"></a>5.1 产生死锁的原因</h4><ol>
+<li>竞争资源<ol>
+<li>竞争非剥夺性资源</li>
+<li>竞争临时性资源</li>
+</ol>
+</li>
+<li>进程间推进顺序非法</li>
+</ol>
+<h4 id="5-2-产生死锁的必要条件"><a href="#5-2-产生死锁的必要条件" class="headerlink" title="5.2 产生死锁的必要条件"></a>5.2 产生死锁的必要条件</h4><ol>
+<li>互斥条件。进程对所分配到的资源进行排他性使用，一段时间内某资源只由一个进程占用</li>
+<li>持有并请求。进程已经保持了持有了至少一个资源，但又提出新的资源请求，而该资源又被其他进程所持有</li>
+<li>不可剥夺。进程已获得的资源，在未使用完之前，不能被剥夺</li>
+<li>环路等待。资源的环形链</li>
+</ol>
+<h3 id="6-预防死锁"><a href="#6-预防死锁" class="headerlink" title="6 预防死锁"></a>6 预防死锁</h3><blockquote>
+<p>使形成死锁的必要条件2，3，4不成立即可</p>
+</blockquote>
+<ol>
+<li>摒弃“请求和保持条件”。规定开始运行的进程，必须一次性申请所执行的所有资源</li>
+<li>摒弃“不可剥夺条件”。当一个持有的进程再提出请求资源而不被满足时，需释放自己所持有的资源</li>
+<li>摒弃“环路等待条件”。将系统所有的资源按类型线性排队，并赋予不同序号。所有进程对资源的请求必须按照序号的递增次序提出资源请求</li>
+</ol>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

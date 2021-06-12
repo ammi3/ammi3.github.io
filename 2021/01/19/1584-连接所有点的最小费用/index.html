@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>1584.连接所有点的最小费用 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目给你一个points 数组，表示 2D 平面上的一些点，其中 points[i] = [xi, yi] 。
+连接点 [xi, yi] 和点 [xj, yj] 的费用为它们之间的 曼哈顿距离 ：|xi - xj| + |yi - yj| ，其中 |val| 表示 val 的绝对值。
+请你返回将所有点连接的最小总费用。只有任意两点之间 有且仅有 一条简单路径时，才认为所有点都已连接。">
+  
+  <meta name="description" content="题目给你一个points 数组，表示 2D 平面上的一些点，其中 points[i] &#x3D; [xi, yi] 。 连接点 [xi, yi] 和点 [xj, yj] 的费用为它们之间的 曼哈顿距离 ：|xi - xj| + |yi - yj| ，其中 |val| 表示 val 的绝对值。 请你返回将所有点连接的最小总费用。只有任意两点之间 有且仅有 一条简单路径时，才认为所有点都已连接。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1584.连接所有点的最小费用">
+<meta property="og:url" content="http://example.com/2021/01/19/1584-%E8%BF%9E%E6%8E%A5%E6%89%80%E6%9C%89%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目给你一个points 数组，表示 2D 平面上的一些点，其中 points[i] &#x3D; [xi, yi] 。 连接点 [xi, yi] 和点 [xj, yj] 的费用为它们之间的 曼哈顿距离 ：|xi - xj| + |yi - yj| ，其中 |val| 表示 val 的绝对值。 请你返回将所有点连接的最小总费用。只有任意两点之间 有且仅有 一条简单路径时，才认为所有点都已连接。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210119221437.png">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210119221456.png">
+<meta property="article:published_time" content="2021-01-19T11:49:43.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.127Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210119221437.png">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/01/19/1584-连接所有点的最小费用/">
+  <time datetime="2021-01-19T11:49:43.000Z">
+    2021-01-19
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">1584.连接所有点的最小费用</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你一个points 数组，表示 2D 平面上的一些点，其中 points[i] = [xi, yi] 。</p>
+<p>连接点 [xi, yi] 和点 [xj, yj] 的费用为它们之间的 曼哈顿距离 ：|xi - xj| + |yi - yj| ，其中 |val| 表示 val 的绝对值。</p>
+<p>请你返回将所有点连接的最小总费用。只有任意两点之间 有且仅有 一条简单路径时，才认为所有点都已连接。</p>
+<p><img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210119221437.png"></p>
+<span id="more"></span> 
+<p>实例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：points = [[0,0],[2,2],[3,10],[5,2],[7,0]]</span><br><span class="line">输出：20</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<p><img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210119221456.png"></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>所有点连接的最小费用，对于每一条边，假设曼哈顿距离为其边权，那么只需要找到能够连接所有点的最小边权的边。所以，我们需要对边权进行排序（从小到大）</li>
+<li>拿到已经排序好的边权时，判断每条边的两个顶点是否属于一个连通图<ol>
+<li>若属于一个连通图，直接跳过<code>(之前两点已经加入过该连通图，表示有边权比其小的连接方式)</code></li>
+<li>若不属于一个连通图，则合并这两个连通分量</li>
+<li>结束条件：直到一个连通分量包含所有的点</li>
+</ol>
+</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCostConnectPoints</span><span class="params">(<span class="keyword">int</span>[][] points)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = points.length;</span><br><span class="line">        PriorityQueue&lt;Edge&gt; priorityQueue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Edge&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Edge e1, Edge e2)</span> </span>&#123;</span><br><span class="line">                 <span class="keyword">return</span> e1.dis - e2.dis;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">                Edge e = <span class="keyword">new</span> Edge(points, i, j);</span><br><span class="line">                priorityQueue.offer(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ---------此时已经拿到排序过的边权和其对应的两个点-------</span></span><br><span class="line">        UnionFind myUnionFind = <span class="keyword">new</span> UnionFind(len);</span><br><span class="line">        <span class="comment">// 记录边的个数</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(count &lt; len - <span class="number">1</span> &amp;&amp; !priorityQueue.isEmpty()) &#123;</span><br><span class="line">            Edge cur = priorityQueue.poll();</span><br><span class="line">            <span class="keyword">int</span> start = cur.start;</span><br><span class="line">            <span class="keyword">int</span> end = cur.end;</span><br><span class="line">            <span class="keyword">int</span> dis = cur.dis;</span><br><span class="line">            <span class="keyword">if</span>(myUnionFind.find(start) != myUnionFind.find(end)) &#123;</span><br><span class="line">                myUnionFind.union(start, end);</span><br><span class="line">                count++;</span><br><span class="line">                res += dis;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Edge</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start;</span><br><span class="line">        <span class="keyword">int</span> end;</span><br><span class="line">        <span class="keyword">int</span> dis;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Edge</span><span class="params">(<span class="keyword">int</span>[][] points, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">            start = i;</span><br><span class="line">            end = j;</span><br><span class="line">            dis = Math.abs(points[j][<span class="number">1</span>]-points[i][<span class="number">1</span>]) + Math.abs(points[j][<span class="number">0</span>]-points[i][<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] par;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">UnionFind</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">            par = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                par[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> rootA = find(a);</span><br><span class="line">            <span class="keyword">int</span> rootB = find(b);</span><br><span class="line">            <span class="keyword">if</span>(rootA != rootB) &#123;</span><br><span class="line">                <span class="keyword">if</span>(par[rootA] &lt; par[rootB]) &#123;</span><br><span class="line">                    par[rootB] = rootA;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span>(par[rootA] == par[rootB]) &#123;</span><br><span class="line">                        par[rootB]--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    par[rootA] = rootB;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(par[index] != index) &#123;</span><br><span class="line">                <span class="keyword">return</span> find(par[index]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> par[index];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

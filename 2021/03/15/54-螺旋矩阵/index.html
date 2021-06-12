@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>54.螺旋矩阵 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。">
+  
+  <meta name="description" content="题目给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="54.螺旋矩阵">
+<meta property="og:url" content="http://example.com/2021/03/15/54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210315133201.png">
+<meta property="article:published_time" content="2021-03-15T05:05:58.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.132Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210315133201.png">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/03/15/54-螺旋矩阵/">
+  <time datetime="2021-03-15T05:05:58.000Z">
+    2021-03-15
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">54.螺旋矩阵</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。</p>
+<span id="more"></span>
+
+<p>示例<br><img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210315133201.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">输出：[1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<ol>
+<li>m == matrix.length</li>
+<li>n == matrix[i].length</li>
+<li>1 &lt;= m, n &lt;= 10</li>
+<li>-100 &lt;= matrix[i][j] &lt;= 100</li>
+</ol>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>模拟循环</li>
+<li>按照第一行–&gt;最后一列–&gt;最后一行–&gt;第一列这种外层遍历，依次将二维数组“剥开”</li>
+<li>这种剥开的方式，会使起始行r与终止行row逐渐靠近，同理列也是如此，故终止条件是起始行=终止行，起始列=终止列</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> row = matrix.length, col = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>, c = <span class="number">0</span>;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(r &lt; row &amp;&amp; c &lt; col) &#123;</span><br><span class="line">            <span class="comment">// 第一行</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = c; i &lt; col; i++) &#123;</span><br><span class="line">                res.add(matrix[r][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            r++;</span><br><span class="line">            <span class="comment">// 最后一列</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = r; i &lt; row; i++) &#123;</span><br><span class="line">                res.add(matrix[i][col-<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            col--;</span><br><span class="line">            <span class="comment">//最后一行</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = col-<span class="number">1</span>; i &gt;= c &amp;&amp; r &lt; row; i--) &#123;</span><br><span class="line">                res.add(matrix[row-<span class="number">1</span>][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            row--;</span><br><span class="line">            <span class="comment">// 第一列</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = row-<span class="number">1</span>; i &gt;= r &amp;&amp; c &lt; col; i--) &#123;</span><br><span class="line">                res.add(matrix[i][c]);</span><br><span class="line">            &#125;</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

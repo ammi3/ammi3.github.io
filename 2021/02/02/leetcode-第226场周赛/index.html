@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>leetcode.第226场周赛 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目1：1742.盒子中小球的最大数量你在一家生产小球的玩具厂工作，有 n 个小球，编号从 lowLimit 开始，到 highLimit 结束（包括 lowLimit 和 highLimit ，即 n == highLimit - lowLimit + 1）。另有无限数量的盒子，编号从 1 到 infinity 。
+你的工作是将每个小球放入盒子中，其中盒子的编号应当等于小球编号上每位数字的和。例">
+  
+  <meta name="description" content="题目1：1742.盒子中小球的最大数量你在一家生产小球的玩具厂工作，有 n 个小球，编号从 lowLimit 开始，到 highLimit 结束（包括 lowLimit 和 highLimit ，即 n &#x3D;&#x3D; highLimit - lowLimit + 1）。另有无限数量的盒子，编号从 1 到 infinity 。 你的工作是将每个小球放入盒子中，其中盒子的编号应当等于小球编号上每位数字的和。例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode.第226场周赛">
+<meta property="og:url" content="http://example.com/2021/02/02/leetcode-%E7%AC%AC226%E5%9C%BA%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目1：1742.盒子中小球的最大数量你在一家生产小球的玩具厂工作，有 n 个小球，编号从 lowLimit 开始，到 highLimit 结束（包括 lowLimit 和 highLimit ，即 n &#x3D;&#x3D; highLimit - lowLimit + 1）。另有无限数量的盒子，编号从 1 到 infinity 。 你的工作是将每个小球放入盒子中，其中盒子的编号应当等于小球编号上每位数字的和。例">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-02T13:49:37.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.143Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/02/02/leetcode-第226场周赛/">
+  <time datetime="2021-02-02T13:49:37.000Z">
+    2021-02-02
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">leetcode.第226场周赛</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目1：1742-盒子中小球的最大数量"><a href="#题目1：1742-盒子中小球的最大数量" class="headerlink" title="题目1：1742.盒子中小球的最大数量"></a>题目1：1742.盒子中小球的最大数量</h3><p>你在一家生产小球的玩具厂工作，有 n 个小球，编号从 lowLimit 开始，到 highLimit 结束（包括 lowLimit 和 highLimit ，即 n == highLimit - lowLimit + 1）。另有无限数量的盒子，编号从 1 到 infinity 。</p>
+<p>你的工作是将每个小球放入盒子中，其中盒子的编号应当等于小球编号上每位数字的和。例如，编号 321 的小球应当放入编号 3 + 2 + 1 = 6 的盒子，而编号 10 的小球应当放入编号 1 + 0 = 1 的盒子。</p>
+<p>给你两个整数 lowLimit 和 highLimit ，返回放有最多小球的盒子中的小球数量。如果有多个盒子都满足放有最多小球，只需返回其中任一盒子的小球数量。</p>
+<span id="more"></span>
+
+<p>示例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：lowLimit = 1, highLimit = 10</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">盒子编号：1 2 3 4 5 6 7 8 9 10 11 ...</span><br><span class="line">小球数量：2 1 1 1 1 1 1 1 1 0  0  ...</span><br><span class="line">编号 1 的盒子放有最多小球，小球数量为 2 。</span><br></pre></td></tr></table></figure>
+
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><ol>
+<li>对于区间<code>[lowLimit, highLimit]</code>中的每一个值，求其每位的和sum</li>
+<li>将(sum, count)这种表示sum出现次数的键-值对存入Map</li>
+<li>在遍历区间<code>[lowLimit, highLimit]</code>的同时，去更新出现次数最多的sum对应的区间数</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countBalls</span><span class="params">(<span class="keyword">int</span> lowLimit, <span class="keyword">int</span> highLimit)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = lowLimit; i &lt;= highLimit; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, tmp = i;</span><br><span class="line">        <span class="keyword">while</span>(tmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          sum += tmp % <span class="number">10</span>;</span><br><span class="line">          tmp /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> val = map.getOrDefault(sum, <span class="number">0</span>);</span><br><span class="line">        map.put(sum, val+<span class="number">1</span>);</span><br><span class="line">        res = Math.max(res, map.get(sum));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="题目2：1743-从相邻元素对还原数组"><a href="#题目2：1743-从相邻元素对还原数组" class="headerlink" title="题目2：1743. 从相邻元素对还原数组"></a>题目2：1743. 从相邻元素对还原数组</h3><p>存在一个由 n 个不同元素组成的整数数组 nums ，但你已经记不清具体内容。好在你还记得 nums 中的每一对相邻元素。</p>
+<p>给你一个二维整数数组 adjacentPairs ，大小为 n - 1 ，其中每个 adjacentPairs[i] = [ui, vi] 表示元素 ui 和 vi 在 nums 中相邻。</p>
+<p>题目数据保证所有由元素 nums[i] 和 nums[i+1] 组成的相邻元素对都存在于 adjacentPairs 中，存在形式可能是 [nums[i], nums[i+1]] ，也可能是 [nums[i+1], nums[i]] 。这些相邻元素对可以 按任意顺序 出现。</p>
+<p>返回 原始数组 nums 。如果存在多种解答，返回 其中任意一个 即可。</p>
+<p>示例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：adjacentPairs = [[2,1],[3,4],[3,2]]</span><br><span class="line">输出：[1,2,3,4]</span><br><span class="line">解释：数组的所有相邻元素对都在 adjacentPairs 中。</span><br><span class="line">特别要注意的是，adjacentPairs[i] 只表示两个元素相邻，并不保证其 左-右 顺序。</span><br></pre></td></tr></table></figure>
+
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><ol>
+<li>遍历二维数组中的所有元素，找到<strong>入度，出度分别为1的两个值</strong>。出度为1：起点，入度为1：终点</li>
+<li>将二维数组中相邻的元素存入Map</li>
+<li>得到起点<code>也就是数组的第一个元素</code>后通过Map来组建结果</li>
+</ol>
+<h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] restoreArray(<span class="keyword">int</span>[][] adjacentPairs) &#123;</span><br><span class="line">      <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">      Map&lt;Integer, List&lt;Integer&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span>[] cur : adjacentPairs) &#123;</span><br><span class="line">        <span class="keyword">int</span> u = cur[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> v = cur[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; list1 = map.getOrDefault(u, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        list1.add(v);</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; list2 = map.getOrDefault(v, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        list2.add(u);</span><br><span class="line"></span><br><span class="line">        map.put(u, list1);</span><br><span class="line">        map.put(v, list2);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(Map.entry&lt;Integer, List&lt;Integer&gt;&gt; entry : map.entrySet()) &#123;</span><br><span class="line">        <span class="keyword">if</span>(entry.getValue().size() == <span class="number">1</span>) &#123;</span><br><span class="line">          start = entry.getKey();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">      Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">      <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[map.size()];</span><br><span class="line">      res[<span class="number">0</span>] = start;</span><br><span class="line">      set.add(start);</span><br><span class="line">      <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span>(index &lt; res.length) &#123;</span><br><span class="line">        List&lt;Integer&gt; cur = map.get(res[index-<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cur.size(); j++) &#123;</span><br><span class="line">          <span class="keyword">if</span>(!set.contains(cur.get(j))) &#123;</span><br><span class="line">            res[index++] = cur.get(j);</span><br><span class="line">            set.add(cur.get(j));</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题目3：1744-你能在你最喜欢的那天吃到你最喜欢的糖果吗？"><a href="#题目3：1744-你能在你最喜欢的那天吃到你最喜欢的糖果吗？" class="headerlink" title="题目3：1744. 你能在你最喜欢的那天吃到你最喜欢的糖果吗？"></a>题目3：1744. 你能在你最喜欢的那天吃到你最喜欢的糖果吗？</h3><p>给你一个下标从 0 开始的正整数数组 candiesCount ，其中 candiesCount[i] 表示你拥有的第 i 类糖果的数目。同时给你一个二维数组 queries ，其中 queries[i] = [favoriteTypei, favoriteDayi, dailyCapi] 。</p>
+<p>你按照如下规则进行一场游戏：</p>
+<p>你从第 0 天开始吃糖果。<br>你在吃完 所有 第 i - 1 类糖果之前，不能 吃任何一颗第 i 类糖果。<br>在吃完所有糖果之前，你必须每天 至少 吃 一颗 糖果。<br>请你构建一个布尔型数组 answer ，满足 answer.length == queries.length 。answer[i] 为 true 的条件是：在每天吃 不超过 dailyCapi 颗糖果的前提下，你可以在第 favoriteDayi 天吃到第 favoriteTypei 类糖果；否则 answer[i] 为 false 。注意，只要满足上面 3 条规则中的第二条规则，你就可以在同一天吃不同类型的糖果。</p>
+<p>请你返回得到的数组 answer 。</p>
+<p>示例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candiesCount = [7,4,5,3,8], queries = [[0,2,2],[4,2,4],[2,13,1000000000]]</span><br><span class="line">输出：[true,false,true]</span><br><span class="line">提示：</span><br><span class="line">1- 在第 0 天吃 2 颗糖果(类型 0），第 1 天吃 2 颗糖果（类型 0），第 2 天你可以吃到类型 0 的糖果。</span><br><span class="line">2- 每天你最多吃 4 颗糖果。即使第 0 天吃 4 颗糖果（类型 0），第 1 天吃 4 颗糖果（类型 0 和类型 1），你也没办法在第 2 天吃到类型 4 的糖果。换言之，你没法在每天吃 4 颗糖果的限制下在第 2 天吃到第 4 类糖果。</span><br><span class="line">3- 如果你每天吃 1 颗糖果，你可以在第 13 天吃到类型 2 的糖果。</span><br></pre></td></tr></table></figure>
+
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><ol>
+<li>在吃第i类糖果时，前i类糖果必须吃完。那么要想在favorityDayi天吃到favoriteTypei类糖果，所以我们在吃第i类糖果时，已经吃了[preSum[i], preSum[i+1]]颗糖果</li>
+<li>对于queries中的每一个元素，我们判断此时已经吃的糖果数目的范围是否在[preSum[i], preSum[i+1]]内<ol>
+<li>若在此区间内，返回True</li>
+<li>不在此区间内，返回False</li>
+</ol>
+</li>
+</ol>
+<h4 id="参考代码-2"><a href="#参考代码-2" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span>[] canEat(<span class="keyword">int</span>[] candiesCount, <span class="keyword">int</span>[][] queries) &#123;</span><br><span class="line">      <span class="comment">// 因为必须吃完第i-1类糖果之后，才能吃第i类糖果</span></span><br><span class="line">      <span class="comment">// 所以我们可以吃第i类糖果时已经吃了[preSum[i], preSum[i+1]]颗糖果</span></span><br><span class="line">      <span class="comment">// 所以只需要判定我们当前吃糖果的数量是否在那个区间内</span></span><br><span class="line">      <span class="keyword">long</span>[] preSum = <span class="keyword">new</span> <span class="keyword">long</span>[candiesCount.length+<span class="number">1</span>];</span><br><span class="line">      preSum[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; candiesCount.length; i++) &#123;</span><br><span class="line">        preSum[i+<span class="number">1</span>] = candiesCount[i] + preSum[i];</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">boolean</span>[] answer = <span class="keyword">new</span> <span class="keyword">boolean</span>[queries.length];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 由于天数是从0开始的，所以在计算favorityDay时应+1</span></span><br><span class="line">      <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span>[] cur : queries) &#123;</span><br><span class="line">        <span class="keyword">int</span> favorityType = cur[<span class="number">0</span>], favorityDay = cur[<span class="number">1</span>], dailyCap = cur[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// [min, max]与[preSum[i], preSum[i+1]]若有交集，返回True，否则，返回false</span></span><br><span class="line">        answer[i++] = !((favorityDay + <span class="number">1</span>) &gt; preSum[favorityType + <span class="number">1</span>] || ((<span class="keyword">long</span>) (favorityDay + <span class="number">1</span>) * dailyCap &lt; preSum[favorityType] + <span class="number">1</span>));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="题目4：1745-回文串分割-IV"><a href="#题目4：1745-回文串分割-IV" class="headerlink" title="题目4：1745. 回文串分割 IV"></a>题目4：1745. 回文串分割 IV</h3><p>给你一个字符串 s ，如果可以将它分割成三个 非空 回文子字符串，那么返回 true ，否则返回 false 。</p>
+<p>当一个字符串正着读和反着读是一模一样的，就称其为 回文字符串 。</p>
+<p>示例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;abcbdd&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：&quot;abcbdd&quot; = &quot;a&quot; + &quot;bcb&quot; + &quot;dd&quot;，三个子字符串都是回文的。</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<ol>
+<li>3 &lt;= s.length &lt;= 2000</li>
+<li>s​​​​​​ 只包含小写英文字母。</li>
+</ol>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><ol>
+<li>判断一个字符串是否能被分割为3个非空回文子串，所以需要两个间断点将该字符串分割为三个子串</li>
+<li>对于分割后的三个子串，依次判断是否为非空回文串</li>
+<li>这里使用动态规划来存储字符[i, j]区间的子串是否为回文串</li>
+</ol>
+<h4 id="参考代码-3"><a href="#参考代码-3" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkPartitioning</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> len = s.length();</span><br><span class="line">      <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[len][len];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = j; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">          <span class="keyword">boolean</span> flag = s.charAt(i) == s.charAt(j);</span><br><span class="line">          <span class="keyword">if</span>(i == j) dp[i][j] = <span class="keyword">true</span>;</span><br><span class="line">          <span class="keyword">else</span> <span class="keyword">if</span>(flag &amp;&amp; j - i &gt; <span class="number">1</span> &amp;&amp; dp[i + <span class="number">1</span>][j-<span class="number">1</span>]) dp[i][j] = <span class="keyword">true</span>;</span><br><span class="line">          <span class="keyword">else</span> <span class="keyword">if</span>(flag &amp;&amp; j - i == <span class="number">1</span>) dp[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; len - <span class="number">1</span>; j++) &#123;</span><br><span class="line">          <span class="keyword">if</span>(dp[i][j] &amp;&amp; dp[<span class="number">0</span>][i-<span class="number">1</span>] &amp;&amp; dp[j+<span class="number">1</span>][len-<span class="number">1</span>]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

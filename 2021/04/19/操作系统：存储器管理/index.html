@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>操作系统：存储器管理 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="1 存储器层次结构1.1 多级存储器结构｜对于通用计算机来讲，存储器层次至少应具有三级：最高层为CPU寄存器，中间为主存，最底层为辅存
+
+1.2 主存储器与寄存器">
+  
+  <meta name="description" content="1 存储器层次结构1.1 多级存储器结构｜对于通用计算机来讲，存储器层次至少应具有三级：最高层为CPU寄存器，中间为主存，最底层为辅存  1.2 主存储器与寄存器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统：存储器管理">
+<meta property="og:url" content="http://example.com/2021/04/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="1 存储器层次结构1.1 多级存储器结构｜对于通用计算机来讲，存储器层次至少应具有三级：最高层为CPU寄存器，中间为主存，最底层为辅存  1.2 主存储器与寄存器">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419125933.png">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419150142.png">
+<meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210421154143.png">
+<meta property="article:published_time" content="2021-04-19T01:07:11.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.145Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419125933.png">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/04/19/操作系统：存储器管理/">
+  <time datetime="2021-04-19T01:07:11.000Z">
+    2021-04-19
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">操作系统：存储器管理</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="1-存储器层次结构"><a href="#1-存储器层次结构" class="headerlink" title="1 存储器层次结构"></a>1 存储器层次结构</h3><h4 id="1-1-多级存储器结构"><a href="#1-1-多级存储器结构" class="headerlink" title="1.1 多级存储器结构"></a>1.1 多级存储器结构</h4><p>｜对于通用计算机来讲，存储器层次至少应具有三级：最高层为CPU寄存器，中间为主存，最底层为辅存</p>
+<p><img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419125933.png"></p>
+<h4 id="1-2-主存储器与寄存器"><a href="#1-2-主存储器与寄存器" class="headerlink" title="1.2 主存储器与寄存器"></a>1.2 主存储器与寄存器</h4><span id="more"></span>
+
+<p>｜主存储器</p>
+<p>主存储器用于保存进程运行时的程序和数据，也称为可执行存储器。</p>
+<p>CPU的控制部件只能从主存储器中取得指令和数据，数据能够从主存储器读取并将它们装入到寄存器中；CPU与外围设备交换的信息也依托于主存储器地址空间</p>
+<p>由于主存储器的访问速度远低于CPU执行指令的速度，为了缓和这一矛盾，在计算机系统中引入了寄存器和高速缓存。</p>
+<p>｜寄存器</p>
+<p>寄存器访问速度很快，完全可以与CPU协调工作</p>
+<p>寄存器用于加速存储器的访问速度，如用寄存器存放操作数，或用作地址寄存器加快地址转换速度</p>
+<h4 id="1-3-高速缓存与磁盘缓存"><a href="#1-3-高速缓存与磁盘缓存" class="headerlink" title="1.3 高速缓存与磁盘缓存"></a>1.3 高速缓存与磁盘缓存</h4><p>｜高速缓存</p>
+<p>高速缓存的容量大于寄存器的容量，小于主存储器，访问速度大于主存储器</p>
+<p>根据<strong>程序的局部性</strong>原理，将主存中一些经常访问的信息存储在高速缓存中，减少访问主存储器的次数，这样可以大幅度提高程序执行速度。</p>
+<p>通常，进程的程序与数据是存放在主存储器中，每当使用时，被临时复制到高速缓存中。当CPU访问一组特定信息时，首先检查它是否在高速缓存内，若存在，则可以直接取出使用，否则，再从主存中读取信息</p>
+<p>｜磁盘缓存</p>
+<p>目前磁盘的I/O速度远低于对主存的访问速度，因此将频繁使用的一部分磁盘数据和信息，暂时存放在磁盘缓存中，可以减少磁盘的访问次数。</p>
+<p>磁盘缓存并不是一种实际存在的存储空间，它依托于固定磁盘，提供对主存储器存储空间的扩充，即：利用主存中的存储空间来暂存从磁盘中读出的信息。</p>
+<h3 id="2-程序的装入与链接"><a href="#2-程序的装入与链接" class="headerlink" title="2 程序的装入与链接"></a>2 程序的装入与链接</h3><blockquote>
+<p>在多道程序环境下，要使程序运行，必须先为其创建进程。</p>
+<p>创建进程的第一步：将程序与数据装入内存。如何将一个用户源程序转换为一个可在内存中执行的程序，需要经过以下步骤：</p>
+<ol>
+<li>编译：由编译程序将用户源代码编译成若干个目标模块</li>
+<li>链接：由链接程序将编译后的一组目标模块，以及它们所需要的库函数链接在一起，形成一个完整的装入模块</li>
+<li>装入：由装入程序将装入模块装入内存</li>
+</ol>
+</blockquote>
+<h4 id="2-1-程序的装入"><a href="#2-1-程序的装入" class="headerlink" title="2.1 程序的装入"></a>2.1 程序的装入</h4><p>｜绝对装入方式</p>
+<p>编译时，如果知道程序将驻留在内存的具体位置，那么编译程序将产生绝对地址的目标代码。</p>
+<p>绝对装入程序按照装入模块中的地址，将程序和数据装入内存。装入模块被装入内存后，由于程序中的逻辑地址与实际内存地址完全相同，故不需对程序和数据的地址进行修改</p>
+<p>｜可重定位装入方式</p>
+<p>在多道程序环境下，编译程序不可能预知所编译目标模块应放在内存的何处，因此，绝对装入方式只适用于单道程序环境</p>
+<p>多道程序环境下，所得到的目标模块的起始地址通常从0开始，程序中的其他地址也都是相对于起始地址计算的，此时应采用可重定位装入方式。</p>
+<p>在采用可重定位装入程序将装入模块装入内存后，会使装入模块中的所有逻辑地址与实际装入内存的物理地址不同。使用此装入方式时，需要修改<strong>数据地址</strong>与<strong>指令地址</strong>，将它们的<strong>相对地址与起始地址相加得到绝对地址</strong>。通常把在装入时对目标程序中指令和数据的修改过程称为重定位</p>
+<p>例子：</p>
+<p>｜动态运行时装入方式</p>
+<p>可重定位装入方式不允许程序运行时在内存中移动位置。在运行过程中程序和数据在内存中的位置可能进程要改变，此时就应用动态运行时装入的方式</p>
+<p>动态运行时装入程序把装入模块装入内存后，并不立即把装入模块中的相对地址转换为绝对地址，而是把这种地址转换推迟到程序真正要执行时才进行。因此，装入内存后的所有地址都仍是相对地址。</p>
+<h4 id="2-2-程序的链接"><a href="#2-2-程序的链接" class="headerlink" title="2.2 程序的链接"></a>2.2 程序的链接</h4><p>｜静态链接方式</p>
+<p>｜装入时动态链接</p>
+<p>｜运行时动态链接</p>
+<h3 id="3-连续分配方式"><a href="#3-连续分配方式" class="headerlink" title="3 连续分配方式"></a>3 连续分配方式</h3><blockquote>
+<p>连续分配方式：指为一个用户分配一个连续的内存空间</p>
+</blockquote>
+<h4 id="3-1-单一连续分配"><a href="#3-1-单一连续分配" class="headerlink" title="3.1 单一连续分配"></a>3.1 单一连续分配</h4><p>｜只能用于单用户，单任务的操作系统。采用这种存储管理方式时，可把内存分为系统区和用户区两部分。</p>
+<p>系统区仅提供给OS使用，通常放在内存的低址部分，用户区是指除系统区以外的全部内存空间</p>
+<h4 id="3-2-固定分区分配"><a href="#3-2-固定分区分配" class="headerlink" title="3.2 固定分区分配"></a>3.2 固定分区分配</h4><p>｜这种分区方式是将内存用户空间划分为若干个固定大小的区域，每个分区只装入一道作业。</p>
+<p>这样，把用户空间划分为几个分区，便允许有几道作业并发执行运行。当一分区空闲时，便可以再从外存的后背作业队列中选择一个适当大小的作业装入该分区</p>
+<p>｜划分分区的方法</p>
+<ol>
+<li>分区大小相等。所有的内存分区大小相等。缺点：缺乏灵活性。</li>
+<li>分区大小不相等。克服了分区大小相等而缺乏灵活性的缺点。</li>
+</ol>
+<p>｜内存分配</p>
+<p>为便于内存分配，将分区按大小进行排队，并为之建立一张分区使用表，其中各表项包括各个分区的起始地址，大小以及状态。</p>
+<img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419150142.png" style="zoom:50%;" />
+
+<h4 id="3-3-动态分区分配"><a href="#3-3-动态分区分配" class="headerlink" title="3.3 动态分区分配"></a>3.3 动态分区分配</h4><p>｜分区分配的数据结构</p>
+<p>为实现分区分配，系统中必须配置相应的数据结构用来描述空闲分区和已分配分区。一般有以下两种形式</p>
+<ol>
+<li>空闲分区表。每个空闲分区占一个表目，表目中包括分区序号，分区始地址以及分区大小等。</li>
+<li>空闲分区链。在每个分区的起始部分，设置一些用于控制分区分配的信息，以及用于链接各分区所用的前向指针；在分区尾部设置一向后指针，通过前，后指针将所有的空闲分区链接成一个双向链表。</li>
+</ol>
+<p>｜分区分配算法</p>
+<ol>
+<li><p>首次适应算法</p>
+<p>在分配内存时，从链首开始查找，直到一个大小能满足要求的空闲分区为之，然后再按照作业的大小从该分区中划分出一块内存空间分配给请求者，余下的空闲分区仍留在空闲链中</p>
+</li>
+<li><p>循环首次适应算法</p>
+<p>在为进程分配内存空间时，不再是每次都从链首开始查找，而是从<strong>上一次找到的空闲分区的下一个空闲分区开始查找</strong>，直到找到一个能满足要求的空闲分区，从中划出一块与请求大小相等的内存空间分配给该作业。</p>
+</li>
+<li><p>最佳适应算法</p>
+<p>“最佳”：每次分配内存时，总能把满足要求，又是最小的空闲分区分配给作业。</p>
+<p>该算法要求将所有的空闲分区按其容量以从小到大的顺序形成一空闲分区链，那么第一次找到的一定是最佳的</p>
+</li>
+<li><p>最坏适应算法</p>
+<p>该算法要<strong>扫描整个空闲分区表或链表</strong>总挑选出一个最大的空闲区分割给作业使用。</p>
+<p>优点：可使剩下的空闲分区不至于太小，产生碎片的几率最小</p>
+</li>
+<li><p>快速适应算法</p>
+<p>又称“分类搜索法”，是将空闲分区根据其容量大小进行分类，对于每一类具有相同容量的所有空闲分区，单独设立一个空闲分区链表，这样，系统中存在多个空闲分区链表，同时在内存中设立一张管理索引表，该表的每一个表项对应了一种空闲分区类型。</p>
+<p>优点：查找效率高，根据进程的长度，寻找到能容纳它的最小空闲区链表，并取第一块进行分配ß</p>
+</li>
+</ol>
+<p>｜分区分配操作</p>
+<ol>
+<li>分配内存</li>
+<li>回收内存</li>
+</ol>
+<h4 id="3-4-伙伴系统"><a href="#3-4-伙伴系统" class="headerlink" title="3.4 伙伴系统"></a>3.4 伙伴系统</h4><h4 id="3-5-哈希算法"><a href="#3-5-哈希算法" class="headerlink" title="3.5 哈希算法"></a>3.5 哈希算法</h4><h4 id="3-6-可重定位分区分配"><a href="#3-6-可重定位分区分配" class="headerlink" title="3.6 可重定位分区分配"></a>3.6 可重定位分区分配</h4><p>｜动态重定位的引入</p>
+<p>连续分配方式中，必须把一个系统或用户程序装入一连续的内存空间。若系统中只有若干个小的分区，即使它们容量的总和大于要装入的程序，但由于这些分区不相邻，也无法把该程序装入内存</p>
+<p>由此可以采用该方法：将内存中的所有作业进行移动，使它们全部都相邻，这样即可把原来分散的多个小分区拼接成一个大分区，就可以把作业装入该区。这种将多个小分区拼接成一个大分区的方法。称为“拼接”。</p>
+<p>由于拼接后的某些程序在内存中的位置发生了变化，此时需要对程序和数据地址加以修改。因此每次“拼接”之后，都必须对移动了的程序或数据进行重定位。</p>
+<p>｜动态重定位实现</p>
+<p>动态运行时装入的方式中，作业装入内存后的所有地址仍是相对地址，将相对地址转换为物理地址的工作，被推迟到程序指令要真正执行时。为使地址的转换不会影响到指令的执行速度，所以需要硬件地址变换机构的支持—“重定位寄存器”。</p>
+<p>程序执行时，真正访问的内存地址是<strong>相对地址与重定位寄存器中的地址相加而形成的</strong></p>
+<h4 id="3-7-对换"><a href="#3-7-对换" class="headerlink" title="3.7 对换"></a>3.7 对换</h4><p>｜对换的引入</p>
+<p>多道程序环境下，可能出现内存不够致使所有进程都被阻塞而迫使CPU停止下来等待的情况。</p>
+<p>所谓“对换”，是指把内存中暂时不能运行的进程或者暂时不用的程序和数据调出到外存上，以便腾出足够的内存空间，再把已具备运行条件的进程或进程所需的程序和数据调入内存</p>
+<p>｜对换空间的管理</p>
+<p>在具有对换功能的OS中，通常把外存分为文件区和对换区。文件区：用于存放文件，对换区：用于存放从内存换出的进程。</p>
+<p>对文件区的管理主要目的：提高文件存储空间的利用率，因此文件区采用离散分配方式</p>
+<p>对对换区的管理主要目的：提高进程换入和换出的速度，因此采用连续分配方式</p>
+<p>｜进程的换出</p>
+<p>每当一进程由于创建子进程而需要更多的内存空间，但又无足够的内存空间等情况发生时，系统应将某进程换出。</p>
+<p>系统先选择处于阻塞状态且优先级最低的进程作为换出进程，然后启动磁盘，将该进程的程序和数据传送到磁盘的对换区上，若传送过程未出现错误，便可回收该进程所占用的内存空间，并对该进程的进程控制块做修改</p>
+<p>｜进程的换入</p>
+<p>系统定时查看所有进程的状态，从中找出“就绪”状态但已换出的进程，将其中换出时间最久的进程作为换入进程</p>
+<h3 id="4-基本分页存储管理"><a href="#4-基本分页存储管理" class="headerlink" title="4 基本分页存储管理"></a>4 基本分页存储管理</h3><blockquote>
+<p>连续分配会形成许多“碎片”，虽然可以通过“拼接”方法将许多碎片拼接成可用的大块空间，但必须为之付出巨大开销。</p>
+<p>由此，产生了<strong>离散分配方式</strong>。若离散分配的基本单位是“页”，则称为分页存储管理方式，若离散分配方式的基本单位是“段”，则称为分段存储管理方式</p>
+</blockquote>
+<p>分页存储中，若不具备页面对换功能，则称为基本的分页存储管理方式</p>
+<h4 id="4-1-页面与页表"><a href="#4-1-页面与页表" class="headerlink" title="4.1 页面与页表"></a>4.1 页面与页表</h4><p>｜页面</p>
+<ol>
+<li><p>页面和物理块</p>
+<p>分页存储管理将一个进程的逻辑地址空间分为若干个大小相等的片，称为页面或页。</p>
+<p>把内存空间与页面相同大小的若干个存储块，称为块或页框</p>
+<p>把进程最后一页中经常装不满一块而形成的碎片，称为“页面碎片”</p>
+</li>
+<li><p>页面大小</p>
+<p>页面太小，有利于提高内存利用率，但会造成进程的页表过长，占用大量内存</p>
+<p>页面大小应为2的幂，通常为512B～8KB</p>
+</li>
+</ol>
+<p>｜地址结构</p>
+<img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210421154143.png" style="zoom:50%;" />
+
+<ol>
+<li><p>包含两部分。页号与位移量。0～11位为页内地址，即每页大小为4KB=2^12, 12～31位为页号，地址空间最多允许有1M=2^20页</p>
+</li>
+<li><p>给定一逻辑地址空间中地址为A，页面大小为L，则页号P，页内地址<br>$$<br>P = INT[\cfrac {A} {L}]<br>$$</p>
+<p>$$<br>d = [A] MOD L<br>$$</p>
+</li>
+</ol>
+<p>｜页表</p>
+<p>分页系统中，允许将进程的各个页离散地存储在内存不同的物理块中，但是需要系统正确地在内存中找到每个页面所对应的物理块。为此，系统又为每个进程建立了一张页面映像表。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

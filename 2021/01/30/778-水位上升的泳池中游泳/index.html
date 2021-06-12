@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>778.水位上升的泳池中游泳 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目在一个 N x N 的坐标方格 grid 中，每一个方格的值 grid[i][j] 表示在位置 (i,j) 的平台高度。
+现在开始下雨了。当时间为 t 时，此时雨水导致水池中任意位置的水位为 t 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。
+你">
+  
+  <meta name="description" content="题目在一个 N x N 的坐标方格 grid 中，每一个方格的值 grid[i][j] 表示在位置 (i,j) 的平台高度。 现在开始下雨了。当时间为 t 时，此时雨水导致水池中任意位置的水位为 t 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。 你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="778.水位上升的泳池中游泳">
+<meta property="og:url" content="http://example.com/2021/01/30/778-%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目在一个 N x N 的坐标方格 grid 中，每一个方格的值 grid[i][j] 表示在位置 (i,j) 的平台高度。 现在开始下雨了。当时间为 t 时，此时雨水导致水池中任意位置的水位为 t 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。 你">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-30T02:46:58.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.137Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/01/30/778-水位上升的泳池中游泳/">
+  <time datetime="2021-01-30T02:46:58.000Z">
+    2021-01-30
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">778.水位上升的泳池中游泳</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在一个 N x N 的坐标方格 grid 中，每一个方格的值 grid[i][j] 表示在位置 (i,j) 的平台高度。</p>
+<p>现在开始下雨了。当时间为 t 时，此时雨水导致水池中任意位置的水位为 t 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
+<p>你从坐标方格的左上平台 (0，0) 出发。最少耗时多久你才能到达坐标方格的右下平台 (N-1, N-1)？</p>
+<span id="more"></span>
+
+<p>示例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [[0,2],[1,3]]</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">时间为0时，你位于坐标方格的位置为 (0, 0)。</span><br><span class="line">此时你不能游向任意方向，因为四个相邻方向平台的高度都大于当前时间为 0 时的水位。</span><br><span class="line"></span><br><span class="line">等时间到达 3 时，你才可以游向平台 (1, 1). 因为此时的水位是 3，坐标方格中的平台没有比水位 3 更高的，所以你可以游向坐标方格中的任意位置</span><br></pre></td></tr></table></figure>
+
+<p>示例2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入: [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]</span><br><span class="line">输出: 16</span><br><span class="line">解释:</span><br><span class="line"> 0  1  2  3  4</span><br><span class="line">24 23 22 21  5</span><br><span class="line">12 13 14 15 16</span><br><span class="line">11 17 18 19 20</span><br><span class="line">10  9  8  7  6</span><br><span class="line"></span><br><span class="line">最终的路线用加粗进行了标记。</span><br><span class="line">我们必须等到时间为 16，此时才能保证平台 (0, 0) 和 (4, 4) 是连通的</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<ol>
+<li><code>2 &lt;= N &lt;= 50.</code></li>
+<li><code>grid[i][j] 是 [0, ..., N*N - 1] 的排列。</code></li>
+</ol>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>此题和1631.最小体力消耗路径类似</strong></p>
+<h4 id="1-BFS"><a href="#1-BFS" class="headerlink" title="1. BFS"></a>1. BFS</h4><ol>
+<li>从起点开始进行遍历，每到一个点，再记录所有周围能走的点</li>
+<li>在所有能走的点中我们只走水位最低的点</li>
+<li>在到达终点之前重复2</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">swimInWater</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> row = grid.length, col = grid[<span class="number">0</span>].length;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span>[] dx = &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">      <span class="keyword">int</span>[] dy = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line">      PriorityQueue&lt;<span class="keyword">int</span>[]&gt; priQueue = <span class="keyword">new</span> PriorityQueue&lt;<span class="keyword">int</span>[]&gt;(<span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] o1, <span class="keyword">int</span>[] o2)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> o1[<span class="number">2</span>] - o2[<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      priQueue.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>, <span class="number">0</span>, grid[i][j]&#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span>[][] res = <span class="keyword">new</span> <span class="keyword">int</span>[row][col];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span>[] cur : res) &#123;</span><br><span class="line">        Arrays.fill(cur, Integer.MIN_VALUE);</span><br><span class="line">      &#125;</span><br><span class="line">      res[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">boolean</span>[][] vissited = <span class="keyword">new</span> <span class="keyword">boolean</span>[row][col];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span>(!priQueue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] cur = priQueue.poll();</span><br><span class="line">        <span class="keyword">int</span> x = cur[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> y = cur[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> t = cur[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">if</span>(visited[x][y]) <span class="keyword">continue</span>;</span><br><span class="line">        visited[x][y] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> newX = x + dx[i];</span><br><span class="line">          <span class="keyword">int</span> newY = y + dy[i];</span><br><span class="line">          <span class="keyword">if</span>(newX &gt;= <span class="number">0</span> &amp;&amp; newX &lt; row &amp;&amp; newY &gt;= <span class="number">0</span> &amp;&amp; newY &lt; col &amp;&amp; !visited[newX][newY]) &#123;</span><br><span class="line">            <span class="keyword">int</span> newT = Math.max(res[x][y], grid[newX][newY]);</span><br><span class="line">            res[newX][newY] = Math.max(res[newX][newY], newT);</span><br><span class="line">            priQueue.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;newX, newY, res[newX][newY]&#125;);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> res[row-<span class="number">1</span>][col-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-并查集"><a href="#2-并查集" class="headerlink" title="2. 并查集"></a>2. 并查集</h4><ol>
+<li>将网格的每个格子看作一个节点</li>
+<li>相邻节点之间的权值为对应两个相邻节点对应的值中的较大者</li>
+<li>对所有的<code>[点，点，权值]</code>按从小到大进行排序</li>
+<li>从小到大合并两个节点，直到起点与终点处于相同的连通分量</li>
+</ol>
+<h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">swimInWater</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> row = grid.length, col = grid[<span class="number">0</span>].length;</span><br><span class="line"></span><br><span class="line">      List&lt;<span class="keyword">int</span>[]&gt; edges = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</span><br><span class="line">          <span class="keyword">int</span> id = i * col + j;</span><br><span class="line">          <span class="keyword">if</span>(i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            edges.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;id - col, id, Math.max(grid[i][j], grid[i-<span class="number">1</span>][j])&#125;);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span>(j &gt; <span class="number">0</span>) &#123; </span><br><span class="line">            edges.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;id - <span class="number">1</span>, id, Math.max(grid[i][j], grid[i][j-<span class="number">1</span>])&#125;);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      Collections.sort(edges, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] o1, <span class="keyword">int</span>[] o2)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> o1[<span class="number">2</span>] - o2[<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      UnionFind myUnionFind = <span class="keyword">new</span> UnionFind(row * col);</span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span>[] edge : edges) &#123;</span><br><span class="line">        <span class="keyword">int</span> i = edge[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> j = edge[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> t = edge[<span class="number">2</span>];</span><br><span class="line">        myUnionFind.union(i, j);</span><br><span class="line">        <span class="keyword">if</span>(myUnionFind.isConnected(<span class="number">0</span>, row * col - <span class="number">1</span>)) &#123;</span><br><span class="line">          res = t;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span>[] parent;</span><br><span class="line">      <span class="keyword">int</span>[] rank;</span><br><span class="line">      <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="title">UnionFind</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        parent = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        rank = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">this</span>.count = n;</span><br><span class="line">        Arrays.fill(rank, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">          parent[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rootA = find(a);</span><br><span class="line">        <span class="keyword">int</span> rootB = find(b);</span><br><span class="line">        <span class="keyword">return</span> rootA == rootB;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rootA = find(a);</span><br><span class="line">        <span class="keyword">int</span> rootB = find(b);</span><br><span class="line">        <span class="keyword">if</span>(rootA == rootB) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(rank[rootA] &lt; rank[rootB]) &#123;</span><br><span class="line">          parent[rootA] = rootB;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">if</span>(rank[rootA] == rank[rootB]) &#123;</span><br><span class="line">            rank[rootA]++;</span><br><span class="line">          &#125;</span><br><span class="line">          parent[rootB] = rootA;</span><br><span class="line">        &#125;</span><br><span class="line">        count--;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index != parent[index]) &#123;</span><br><span class="line">          <span class="keyword">return</span> find(parent[index]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

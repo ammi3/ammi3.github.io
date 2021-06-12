@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>703.数据流中的第K大元素 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。
+请实现 KthLargest 类：
+KthLargest(int k, int[] nums) 使用整数 k 和整数流 nums 初始化对象。int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 k 大的元素。">
+  
+  <meta name="description" content="题目设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。 请实现 KthLargest 类： KthLargest(int k, int[] nums) 使用整数 k 和整数流 nums 初始化对象。int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 k 大的元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="703.数据流中的第K大元素">
+<meta property="og:url" content="http://example.com/2021/02/12/703-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E7%AC%ACK%E5%A4%A7%E5%85%83%E7%B4%A0/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。 请实现 KthLargest 类： KthLargest(int k, int[] nums) 使用整数 k 和整数流 nums 初始化对象。int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 k 大的元素。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-12T04:56:53.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.134Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/02/12/703-数据流中的第K大元素/">
+  <time datetime="2021-02-12T04:56:53.000Z">
+    2021-02-12
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">703.数据流中的第K大元素</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。</p>
+<p>请实现 KthLargest 类：</p>
+<p>KthLargest(int k, int[] nums) 使用整数 k 和整数流 nums 初始化对象。<br>int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 k 大的元素。</p>
+<span id="more"></span>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">[&quot;KthLargest&quot;, &quot;add&quot;, &quot;add&quot;, &quot;add&quot;, &quot;add&quot;, &quot;add&quot;]</span><br><span class="line">[[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]</span><br><span class="line">输出：</span><br><span class="line">[null, 4, 5, 5, 8, 8]</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">KthLargest kthLargest = new KthLargest(3, [4, 5, 8, 2]);</span><br><span class="line">kthLargest.add(3);   // return 4</span><br><span class="line">kthLargest.add(5);   // return 5</span><br><span class="line">kthLargest.add(10);  // return 5</span><br><span class="line">kthLargest.add(9);   // return 8</span><br><span class="line">kthLargest.add(4);   // return 8</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<ol>
+<li>1 &lt;= k &lt;= 104</li>
+<li>0 &lt;= nums.length &lt;= 104</li>
+<li>-104 &lt;= nums[i] &lt;= 104</li>
+<li>-104 &lt;= val &lt;= 104</li>
+<li>最多调用 add 方法 104 次</li>
+<li>题目数据保证，在查找第 k 大元素时，数组中至少有 k 个元素</li>
+</ol>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>第K大，所以我们使用大小为K的小顶堆作为存储结构，那么堆顶元素就是该数据流的第K大元素</li>
+</ol>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KthLargest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> PriorityQueue&lt;Integer&gt; q ;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> k;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KthLargest</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.k = k;</span><br><span class="line">        q = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: nums) &#123;</span><br><span class="line">            add(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(q.size() &lt; k) &#123;</span><br><span class="line">            q.offer(val);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(q.peek() &lt; val) &#123;</span><br><span class="line">            q.poll();</span><br><span class="line">            q.offer(val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> q.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your KthLargest object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * KthLargest obj = new KthLargest(k, nums);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.add(val);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

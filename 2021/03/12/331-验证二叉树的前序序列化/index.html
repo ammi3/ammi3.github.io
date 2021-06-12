@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>331.验证二叉树的前序序列化 | 山猪的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="题目序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。
+1234567     _9_    /   \   3     2  / \   / \ 4   1  #  6/ \ / \   / \# # # #   # #
+例如，上面的二叉树可以被序列化为字符串 “9,3,4,#,#,1,#,#,2">
+  
+  <meta name="description" content="题目序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。 1234567     _9_    &#x2F;   \   3     2  &#x2F; \   &#x2F; \ 4   1  #  6&#x2F; \ &#x2F; \   &#x2F; \# # # #   # # 例如，上面的二叉树可以被序列化为字符串 “9,3,4,#,#,1,#,#,2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="331.验证二叉树的前序序列化">
+<meta property="og:url" content="http://example.com/2021/03/12/331-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="山猪的小站">
+<meta property="og:description" content="题目序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。 1234567     _9_    &#x2F;   \   3     2  &#x2F; \   &#x2F; \ 4   1  #  6&#x2F; \ &#x2F; \   &#x2F; \# # # #   # # 例如，上面的二叉树可以被序列化为字符串 “9,3,4,#,#,1,#,#,2">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-12T06:27:57.000Z">
+<meta property="article:modified_time" content="2021-06-12T04:41:45.130Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="山猪的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">山猪的小站</a></h1>
+    <p><a href="/">Become so tired so much aware!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2021/03/12/331-验证二叉树的前序序列化/">
+  <time datetime="2021-03-12T06:27:57.000Z">
+    2021-03-12
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">331.验证二叉树的前序序列化</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     _9_</span><br><span class="line">    /   \</span><br><span class="line">   3     2</span><br><span class="line">  / \   / \</span><br><span class="line"> 4   1  #  6</span><br><span class="line">/ \ / \   / \</span><br><span class="line"># # # #   # #</span><br></pre></td></tr></table></figure>
+<p>例如，上面的二叉树可以被序列化为字符串 “9,3,4,#,#,1,#,#,2,#,6,#,#”，其中 # 代表一个空节点。</p>
+<p>给定一串以逗号分隔的序列，验证它是否是正确的二叉树的前序序列化。编写一个在不重构树的条件下的可行算法。</p>
+<p>每个以逗号分隔的字符或为一个整数或为一个表示 null 指针的 ‘#’ 。</p>
+<p>你可以认为输入格式总是有效的，例如它永远不会包含两个连续的逗号，比如 “1,,3” 。</p>
+<span id="more"></span>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>从序列出开始遍历，若遇到’#’则表示该位置已到达叶子结点，若此时栈顶元素也为’#’，表示当前叶子结点的前一个节点就是该叶子节点的父节点，弹出此时的栈顶元素与其父节点，重新加入’#’，表示这一子树正确已结束判断</li>
+<li>不断的进行这样的操作，最终根节点的左右节点都会被替换为’#’，最后栈中若只剩下一个’#’表示所有的子树都正确，故该前序序列化正确，否则错误</li>
+</ol>
+<h4 id="参考代"><a href="#参考代" class="headerlink" title="参考代"></a>参考代</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSerialization</span><span class="params">(String preorder)</span> </span>&#123;</span><br><span class="line">        Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        String[] strs = preorder.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> len = strs.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(strs[i].equals(<span class="string">&quot;#&quot;</span>)) &#123;</span><br><span class="line">                <span class="keyword">while</span>(!stack.isEmpty() &amp;&amp; stack.peek().equals(<span class="string">&quot;#&quot;</span>)) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">if</span>(stack.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(stack.peek().equals(<span class="string">&quot;#&quot;</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">else</span> stack.pop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(strs[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.size() == <span class="number">1</span> &amp;&amp; stack.peek().equals(<span class="string">&quot;#&quot;</span>) ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2021 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
