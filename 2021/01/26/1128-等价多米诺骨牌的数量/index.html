@@ -10,17 +10,18 @@
     <meta name="author" content="John Doe">
   
   
-    <meta name="description" content="题目给你一个由一些多米诺骨牌组成的列表 dominoes。
+    <meta name="description" content="题目
+给你一个由一些多米诺骨牌组成的列表 dominoes。
 如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。
 形式上，dominoes[i] = [a, b] 和 dominoes[j] = [c, d] 等价的前提是 a==c 且 b==d，或是 a==d 且 b==c。
-在 0 &amp;lt;= i &amp;lt; j &amp;lt; dominoes">
+在 0 &amp;lt;= i &amp;lt; j &amp;lt; dominoe">
   
-  <meta name="description" content="题目给你一个由一些多米诺骨牌组成的列表 dominoes。 如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。 形式上，dominoes[i] &#x3D; [a, b] 和 dominoes[j] &#x3D; [c, d] 等价的前提是 a&#x3D;&#x3D;c 且 b&#x3D;&#x3D;d，或是 a&#x3D;&#x3D;d 且 b&#x3D;&#x3D;c。 在 0 &lt;&#x3D; i &lt; j &lt; dominoes">
+  <meta name="description" content="题目 给你一个由一些多米诺骨牌组成的列表 dominoes。 如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。 形式上，dominoes[i] &#x3D; [a, b] 和 dominoes[j] &#x3D; [c, d] 等价的前提是 a&#x3D;&#x3D;c 且 b&#x3D;&#x3D;d，或是 a&#x3D;&#x3D;d 且 b&#x3D;&#x3D;c。 在 0 &lt;&#x3D; i &lt; j &lt; dominoe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1128.等价多米诺骨牌的数量">
 <meta property="og:url" content="http://example.com/2021/01/26/1128-%E7%AD%89%E4%BB%B7%E5%A4%9A%E7%B1%B3%E8%AF%BA%E9%AA%A8%E7%89%8C%E7%9A%84%E6%95%B0%E9%87%8F/index.html">
 <meta property="og:site_name" content="山猪的小站">
-<meta property="og:description" content="题目给你一个由一些多米诺骨牌组成的列表 dominoes。 如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。 形式上，dominoes[i] &#x3D; [a, b] 和 dominoes[j] &#x3D; [c, d] 等价的前提是 a&#x3D;&#x3D;c 且 b&#x3D;&#x3D;d，或是 a&#x3D;&#x3D;d 且 b&#x3D;&#x3D;c。 在 0 &lt;&#x3D; i &lt; j &lt; dominoes">
+<meta property="og:description" content="题目 给你一个由一些多米诺骨牌组成的列表 dominoes。 如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。 形式上，dominoes[i] &#x3D; [a, b] 和 dominoes[j] &#x3D; [c, d] 等价的前提是 a&#x3D;&#x3D;c 且 b&#x3D;&#x3D;d，或是 a&#x3D;&#x3D;d 且 b&#x3D;&#x3D;c。 在 0 &lt;&#x3D; i &lt; j &lt; dominoe">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-26T12:54:49.000Z">
 <meta property="article:modified_time" content="2021-06-12T04:41:45.124Z">
@@ -80,19 +81,21 @@
   
   <div class="entry">
     
-      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你一个由一些多米诺骨牌组成的列表 dominoes。</p>
-<p>如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。</p>
-<p>形式上，dominoes[i] = [a, b] 和 dominoes[j] = [c, d] 等价的前提是 a==c 且 b==d，或是 a==d 且 b==c。</p>
-<p>在 0 &lt;= i &lt; j &lt; dominoes.length 的前提下，找出满足 dominoes[i] 和 dominoes[j] 等价的骨牌对 (i, j) 的数量。</p>
+      <h3 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h3>
+<p>&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x7531;&#x4E00;&#x4E9B;&#x591A;&#x7C73;&#x8BFA;&#x9AA8;&#x724C;&#x7EC4;&#x6210;&#x7684;&#x5217;&#x8868;&#xA0;dominoes&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5176;&#x4E2D;&#x67D0;&#x4E00;&#x5F20;&#x591A;&#x7C73;&#x8BFA;&#x9AA8;&#x724C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x65CB;&#x8F6C; 0&#xA0;&#x5EA6;&#x6216; 180 &#x5EA6;&#x5F97;&#x5230;&#x53E6;&#x4E00;&#x5F20;&#x591A;&#x7C73;&#x8BFA;&#x9AA8;&#x724C;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E24;&#x5F20;&#x724C;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#x3002;</p>
+<p>&#x5F62;&#x5F0F;&#x4E0A;&#xFF0C;dominoes[i] = [a, b]&#xA0;&#x548C;&#xA0;dominoes[j] = [c, d]&#xA0;&#x7B49;&#x4EF7;&#x7684;&#x524D;&#x63D0;&#x662F;&#xA0;a==c&#xA0;&#x4E14;&#xA0;b==d&#xFF0C;&#x6216;&#x662F;&#xA0;a==d &#x4E14;&#xA0;b==c&#x3002;</p>
+<p>&#x5728;&#xA0;0 &lt;= i &lt; j &lt; dominoes.length&#xA0;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x627E;&#x51FA;&#x6EE1;&#x8DB3;&#xA0;dominoes[i] &#x548C;&#xA0;dominoes[j]&#xA0;&#x7B49;&#x4EF7;&#x7684;&#x9AA8;&#x724C;&#x5BF9; (i, j) &#x7684;&#x6570;&#x91CF;&#x3002;</p>
 <span id="more"></span>
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：dominoes = [[1,2],[2,1],[3,4],[5,6]]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
-
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
-<li>暴力模拟，双重循环，超时</li>
-<li>如何去优化双重循环，等价多米诺骨牌：<code>要么相等，要么反转后相等</code>，由于题目中给出的等价的多米诺骨牌的顺序不一致，所以我们可以将其统一格式，然乎只用比较相等的数组即可</li>
+<p>&#x793A;&#x4F8B;&#xFF1A; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x8F93;&#x5165;&#xFF1A;dominoes = [[1,2],[2,1],[3,4],[5,6]]</span><br><span class="line">&#x8F93;&#x51FA;&#xFF1A;1</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x9898;&#x89E3;">&#x9898;&#x89E3;</h3>
+<ol type="1">
+<li>&#x66B4;&#x529B;&#x6A21;&#x62DF;&#xFF0C;&#x53CC;&#x91CD;&#x5FAA;&#x73AF;&#xFF0C;&#x8D85;&#x65F6;</li>
+<li>&#x5982;&#x4F55;&#x53BB;&#x4F18;&#x5316;&#x53CC;&#x91CD;&#x5FAA;&#x73AF;&#xFF0C;&#x7B49;&#x4EF7;&#x591A;&#x7C73;&#x8BFA;&#x9AA8;&#x724C;&#xFF1A;<code>&#x8981;&#x4E48;&#x76F8;&#x7B49;&#xFF0C;&#x8981;&#x4E48;&#x53CD;&#x8F6C;&#x540E;&#x76F8;&#x7B49;</code>&#xFF0C;&#x7531;&#x4E8E;&#x9898;&#x76EE;&#x4E2D;&#x7ED9;&#x51FA;&#x7684;&#x7B49;&#x4EF7;&#x7684;&#x591A;&#x7C73;&#x8BFA;&#x9AA8;&#x724C;&#x7684;&#x987A;&#x5E8F;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x7EDF;&#x4E00;&#x683C;&#x5F0F;&#xFF0C;&#x7136;&#x4E4E;&#x53EA;&#x7528;&#x6BD4;&#x8F83;&#x76F8;&#x7B49;&#x7684;&#x6570;&#x7EC4;&#x5373;&#x53EF;</li>
 </ol>
-<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numEquivDominoPairs</span><span class="params">(<span class="keyword">int</span>[][] dominoes)</span> </span>&#123;</span><br><span class="line">      Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span>[] dominoe : dominoes) &#123;</span><br><span class="line">        Arrays.sort(dominoe);</span><br><span class="line">        String str = dominoe[<span class="number">0</span>]+<span class="string">&quot;,&quot;</span>+dominoe[<span class="number">1</span>];</span><br><span class="line">        map.put(str, map.getOrDefault(str, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> val : map.values()) &#123;</span><br><span class="line">        <span class="keyword">if</span>(val == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> num = val * (val - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        res += num;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="&#x53C2;&#x8003;&#x4EE3;&#x7801;">&#x53C2;&#x8003;&#x4EE3;&#x7801;</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numEquivDominoPairs</span><span class="params">(<span class="keyword">int</span>[][] dominoes)</span> </span>{</span><br><span class="line">      Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span>[] dominoe : dominoes) {</span><br><span class="line">        Arrays.sort(dominoe);</span><br><span class="line">        String str = dominoe[<span class="number">0</span>]+<span class="string">&quot;,&quot;</span>+dominoe[<span class="number">1</span>];</span><br><span class="line">        map.put(str, map.getOrDefault(str, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> val : map.values()) {</span><br><span class="line">        <span class="keyword">if</span>(val == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> num = val * (val - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        res += num;</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line">      </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
     
   </div>
   <footer>

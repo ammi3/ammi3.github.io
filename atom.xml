@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>山猪的小站</title>
+  
+  <subtitle>Become so tired so much aware!</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-06-12T04:41:45.143Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mongo-admin基于Web的Mongodb数据库管理系统</title>
+    <link href="http://example.com/2021/05/30/mongo-admin%E5%9F%BA%E4%BA%8EWeb%E7%9A%84Mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://example.com/2021/05/30/mongo-admin%E5%9F%BA%E4%BA%8EWeb%E7%9A%84Mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-05-30T04:22:47.000Z</published>
+    <updated>2021-06-12T04:41:45.143Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;基本介绍&quot;&gt;1.基本介绍&lt;/h4&gt;
+&lt;p&gt;该项目是基于Web的Mongodb数据库管理工具。&lt;/p&gt;
+&lt;p&gt;演示地址：http://47.98.136.116:8080/&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://supers1.oss-cn-hangzhou.aliyuncs.com/20210526220734.png&quot; /&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阿里一面凉经</title>
+    <link href="http://example.com/2021/04/21/%E9%98%BF%E9%87%8C%E4%B8%80%E9%9D%A2%E5%87%89%E7%BB%8F/"/>
+    <id>http://example.com/2021/04/21/%E9%98%BF%E9%87%8C%E4%B8%80%E9%9D%A2%E5%87%89%E7%BB%8F/</id>
+    <published>2021-04-21T11:00:04.000Z</published>
+    <updated>2021-06-12T04:41:45.146Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;笔试&quot;&gt;1 笔试&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;签到题：给定一个数组[1,2,3,4,5]，给定一个不定区间[i, j]&lt;code&gt;(i, j)&lt;/code&gt;，将区间&lt;code&gt;[i, j]&lt;/code&gt;翻转n次，求之后逆序对数。&lt;/li&gt;
+&lt;li&gt;图：给定n个城堡，每一个城堡赋予一个权重，每两个城堡之间通行需要耗时t秒，求一个人从一个城堡出发，在时间T内，获得最多权重的路线并能返回&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一道AC，第二道图不会&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统：存储器管理</title>
+    <link href="http://example.com/2021/04/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/"/>
+    <id>http://example.com/2021/04/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/</id>
+    <published>2021-04-19T01:07:11.000Z</published>
+    <updated>2021-06-12T04:41:45.145Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;存储器层次结构&quot;&gt;1 存储器层次结构&lt;/h3&gt;
+&lt;h4 id=&quot;多级存储器结构&quot;&gt;1.1 多级存储器结构&lt;/h4&gt;
+&lt;p&gt;｜对于通用计算机来讲，存储器层次至少应具有三级：最高层为CPU寄存器，中间为主存，最底层为辅存&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419125933.png&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;主存储器与寄存器&quot;&gt;1.2 主存储器与寄存器&lt;/h4&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>算法小结：排序算法</title>
+    <link href="http://example.com/2021/04/16/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%EF%BC%9A%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>http://example.com/2021/04/16/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%EF%BC%9A%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
+    <published>2021-04-16T14:31:40.000Z</published>
+    <updated>2021-06-12T04:41:45.146Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;初级排序算法&quot;&gt;1. 初级排序算法&lt;/h3&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统：处理机调度</title>
+    <link href="http://example.com/2021/04/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"/>
+    <id>http://example.com/2021/04/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/</id>
+    <published>2021-04-10T05:30:04.000Z</published>
+    <updated>2021-06-12T04:41:45.145Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;处理机调度&quot;&gt;1. 处理机调度&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统：进程与线程</title>
+    <link href="http://example.com/2021/04/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://example.com/2021/04/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</id>
+    <published>2021-04-08T23:58:06.000Z</published>
+    <updated>2021-06-12T04:41:45.146Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;进程概念&quot;&gt;1. 进程概念&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;未配置OS的系统中，程序是顺序执行的；在多道程序环境下，允许多个程序并发执行。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;程序顺序执行的特征&quot;&gt;1.1 程序顺序执行的特征&lt;/h4&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;顺序性：处理机操作严格按照所规定的顺序执行。即：本操作结束之后才可以进行下一个操作。&lt;/li&gt;
+&lt;li&gt;封闭性：程序在封闭环境下执行。即：程序运行时独占全机资源，资源的状态只有本程序才能改变，程序一旦执行，其结果不受外界因素干扰&lt;/li&gt;
+&lt;li&gt;可再现性：只要程序执行时的环境和初始条件相同，当程序重复执行时，都能的到相同的结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;正是由于程序顺序执行的这些特点，给程序猿debug带来了极大的方便&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>781.森林中的兔子</title>
+    <link href="http://example.com/2021/04/04/781-%E6%A3%AE%E6%9E%97%E4%B8%AD%E7%9A%84%E5%85%94%E5%AD%90/"/>
+    <id>http://example.com/2021/04/04/781-%E6%A3%AE%E6%9E%97%E4%B8%AD%E7%9A%84%E5%85%94%E5%AD%90/</id>
+    <published>2021-04-04T14:39:09.000Z</published>
+    <updated>2021-06-12T04:41:45.137Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;题目&quot;&gt;题目&lt;/h4&gt;
+&lt;p&gt;森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。&lt;/p&gt;
+&lt;p&gt;返回森林中兔子的最少数量。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>1143.最长公共子序列</title>
+    <link href="http://example.com/2021/04/03/1143-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/"/>
+    <id>http://example.com/2021/04/03/1143-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</id>
+    <published>2021-04-03T05:12:48.000Z</published>
+    <updated>2021-06-12T04:41:45.125Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;题目&quot;&gt;题目&lt;/h4&gt;
+&lt;p&gt;给定两个字符串 text1 和 text2，返回这两个字符串的最长 公共子序列 的长度。如果不存在 公共子序列 ，返回 0 。&lt;/p&gt;
+&lt;p&gt;一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。&lt;/p&gt;
+&lt;p&gt;例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。 两个字符串的 公共子序列 是这两个字符串所共同拥有的子序列。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>74.搜索二维矩阵</title>
+    <link href="http://example.com/2021/03/30/74-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/"/>
+    <id>http://example.com/2021/03/30/74-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/</id>
+    <published>2021-03-30T14:20:38.000Z</published>
+    <updated>2021-06-12T04:41:45.136Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;编写一个高效的算法来判断 m x n 矩阵中，是否存在一个目标值。该矩阵具有如下特性： 1. 每行中的整数从左到右按升序排列。 2. 每行的第一个整数大于前一行的最后一个整数。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>173.二叉搜索树迭代器</title>
+    <link href="http://example.com/2021/03/28/173-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
+    <id>http://example.com/2021/03/28/173-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/</id>
+    <published>2021-03-28T12:38:15.000Z</published>
+    <updated>2021-06-12T04:41:45.128Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;实现一个二叉搜索树迭代器类BSTIterator ，表示一个按中序遍历二叉搜索树（BST）的迭代器： 1. BSTIterator(TreeNode root) 初始化 BSTIterator 类的一个对象。BST 的根节点 root 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 中的任何元素。 2. boolean hasNext() 如果向指针右侧遍历存在数字，则返回 true ；否则返回 false 。 3. int next()将指针向右移动，然后返回指针处的数字。&lt;/p&gt;
+&lt;p&gt;注意，指针初始化为一个不存在于 BST 中的数字，所以对 next() 的首次调用将返回 BST 中的最小元素。&lt;/p&gt;
+&lt;p&gt;你可以假设 next() 调用总是有效的，也就是说，当调用 next() 时，BST 的中序遍历中至少存在一个下一个数字。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>73.矩阵置零</title>
+    <link href="http://example.com/2021/03/21/73-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/"/>
+    <id>http://example.com/2021/03/21/73-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/</id>
+    <published>2021-03-21T03:20:12.000Z</published>
+    <updated>2021-06-12T04:41:45.136Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。&lt;/p&gt;
+&lt;p&gt;进阶： 1. 一个直观的解决方案是使用 O(mn) 的额外空间，但这并不是一个好的解决方案。 2. 一个简单的改进方案是使用 O(m + n) 的额外空间，但这仍然不是最好的解决方案。 3. 你能想出一个仅使用常量空间的解决方案吗？</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>150.逆波兰表达式求值</title>
+    <link href="http://example.com/2021/03/20/150-%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/"/>
+    <id>http://example.com/2021/03/20/150-%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/</id>
+    <published>2021-03-20T14:27:37.000Z</published>
+    <updated>2021-06-12T04:41:45.126Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;根据 逆波兰表示法，求表达式的值。&lt;/p&gt;
+&lt;p&gt;有效的算符包括 +、-、*、/ 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>92.反转链表II</title>
+    <link href="http://example.com/2021/03/18/92-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8II/"/>
+    <id>http://example.com/2021/03/18/92-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8II/</id>
+    <published>2021-03-18T02:10:30.000Z</published>
+    <updated>2021-06-12T04:41:45.138Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;给你单链表的头节点 head 和两个整数 left 和 right ，其中 left &amp;lt;= right 。请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>1793.好子数组的最大分数</title>
+    <link href="http://example.com/2021/03/18/1793-%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E6%95%B0/"/>
+    <id>http://example.com/2021/03/18/1793-%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%86%E6%95%B0/</id>
+    <published>2021-03-18T02:08:55.000Z</published>
+    <updated>2021-06-12T04:41:45.128Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;给你一个整数数组 nums （下标从 0 开始）和一个整数 k 。&lt;/p&gt;
+&lt;p&gt;一个子数组 (i, j) 的 分数 定义为 min(nums[i], nums[i+1], ..., nums[j]) * (j - i + 1) 。一个 好 子数组的两个端点下标需要满足 i &amp;lt;= k &amp;lt;= j 。&lt;/p&gt;
+&lt;p&gt;请你返回 好 子数组的最大可能 分数 。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>54.螺旋矩阵</title>
+    <link href="http://example.com/2021/03/15/54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"/>
+    <id>http://example.com/2021/03/15/54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</id>
+    <published>2021-03-15T05:05:58.000Z</published>
+    <updated>2021-06-12T04:41:45.132Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>705.设计哈希集合</title>
+    <link href="http://example.com/2021/03/14/705-%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E9%9B%86%E5%90%88/"/>
+    <id>http://example.com/2021/03/14/705-%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E9%9B%86%E5%90%88/</id>
+    <published>2021-03-14T02:45:42.000Z</published>
+    <updated>2021-06-12T04:41:45.134Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;不使用任何内建的哈希表库设计一个哈希集合（HashSet）。&lt;/p&gt;
+&lt;p&gt;实现 MyHashSet 类： void add(key) 向哈希集合中插入值 key 。 bool contains(key) 返回哈希集合中是否存在这个值 key 。 void remove(key) 将给定值 key 从哈希集合中删除。如果哈希集合中没有这个值，什么也不做。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>706.设计哈希映射</title>
+    <link href="http://example.com/2021/03/14/706-%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E6%98%A0%E5%B0%84/"/>
+    <id>http://example.com/2021/03/14/706-%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E6%98%A0%E5%B0%84/</id>
+    <published>2021-03-14T02:44:15.000Z</published>
+    <updated>2021-06-12T04:41:45.135Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;不使用任何内建的哈希表库设计一个哈希映射（HashMap）。&lt;/p&gt;
+&lt;p&gt;实现 MyHashMap 类： MyHashMap() 用空映射初始化对象 void put(int key, int value) 向 HashMap 插入一个键值对 (key, value) 。如果 key 已经存在于映射中，则更新其对应的值 value 。 int get(int key) 返回特定的 key 所映射的 value ；如果映射中不包含 key 的映射，返回 -1 。 void remove(key) 如果映射中存在 key 的映射，则移除 key 和它所对应的 value 。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>224.基本计算器</title>
+    <link href="http://example.com/2021/03/13/224-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/"/>
+    <id>http://example.com/2021/03/13/224-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/</id>
+    <published>2021-03-13T12:31:37.000Z</published>
+    <updated>2021-06-12T04:41:45.129Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>132.分割回文串II</title>
+    <link href="http://example.com/2021/03/12/132-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2II/"/>
+    <id>http://example.com/2021/03/12/132-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2II/</id>
+    <published>2021-03-12T13:14:28.000Z</published>
+    <updated>2021-06-12T04:41:45.126Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是回文。&lt;/p&gt;
+&lt;p&gt;返回符合要求的 最少分割次数 。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>331.验证二叉树的前序序列化</title>
+    <link href="http://example.com/2021/03/12/331-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    <id>http://example.com/2021/03/12/331-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E5%BA%8F%E5%88%97%E5%8C%96/</id>
+    <published>2021-03-12T06:27:57.000Z</published>
+    <updated>2021-06-12T04:41:45.130Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;序列化二叉树的一种方法是使用前序遍历。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 #。 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;     _9_&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    /   \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   3     2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  / \   / \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 4   1  #  6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/ \ / \   / \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# # # #   # #&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; 例如，上面的二叉树可以被序列化为字符串 &quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;，其中 # 代表一个空节点。&lt;/p&gt;
+&lt;p&gt;给定一串以逗号分隔的序列，验证它是否是正确的二叉树的前序序列化。编写一个在不重构树的条件下的可行算法。&lt;/p&gt;
+&lt;p&gt;每个以逗号分隔的字符或为一个整数或为一个表示 null 指针的 &#39;#&#39; 。&lt;/p&gt;
+&lt;p&gt;你可以认为输入格式总是有效的，例如它永远不会包含两个连续的逗号，比如 &quot;1,,3&quot; 。</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>

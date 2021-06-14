@@ -11,14 +11,15 @@
   
   
     <meta name="description" content="1. 处理机调度
+
 多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
   
-  <meta name="description" content="1. 处理机调度 多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
+  <meta name="description" content="1. 处理机调度  多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统：处理机调度">
 <meta property="og:url" content="http://example.com/2021/04/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/index.html">
 <meta property="og:site_name" content="山猪的小站">
-<meta property="og:description" content="1. 处理机调度 多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
+<meta property="og:description" content="1. 处理机调度  多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419084641.png">
 <meta property="article:published_time" content="2021-04-10T05:30:04.000Z">
@@ -80,159 +81,178 @@
   
   <div class="entry">
     
-      <h3 id="1-处理机调度"><a href="#1-处理机调度" class="headerlink" title="1. 处理机调度"></a>1. 处理机调度</h3><blockquote>
-<p>多道程序环境下，主存中具有多个进程，其数目往往多于处理机的数目。所以就要求系统采用某种算法，动态地将处理机分配给就绪队列中的进程。</p>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous"><h3 id="&#x5904;&#x7406;&#x673A;&#x8C03;&#x5EA6;">1. &#x5904;&#x7406;&#x673A;&#x8C03;&#x5EA6;</h3>
+<blockquote>
+<p>&#x591A;&#x9053;&#x7A0B;&#x5E8F;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x4E3B;&#x5B58;&#x4E2D;&#x5177;&#x6709;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5176;&#x6570;&#x76EE;&#x5F80;&#x5F80;&#x591A;&#x4E8E;&#x5904;&#x7406;&#x673A;&#x7684;&#x6570;&#x76EE;&#x3002;&#x6240;&#x4EE5;&#x5C31;&#x8981;&#x6C42;&#x7CFB;&#x7EDF;&#x91C7;&#x7528;&#x67D0;&#x79CD;&#x7B97;&#x6CD5;&#xFF0C;&#x52A8;&#x6001;&#x5730;&#x5C06;&#x5904;&#x7406;&#x673A;&#x5206;&#x914D;&#x7ED9;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x3002;</p>
 </blockquote>
 <span id="more"></span>
-
-<h4 id="1-1-高级调度"><a href="#1-1-高级调度" class="headerlink" title="1.1 高级调度"></a>1.1 高级调度</h4><blockquote>
-<p>高级调度：又称作业调度或长程调度，主要功能是将<strong>外存上处于后备队列的作业调入内存</strong>，其调度对象是<strong>作业</strong></p>
-</blockquote>
-<p>作业：作业包含了程序，数据以及作业说明书，系统是根据该说明书来对程序的运行进行控制的。</p>
-<p>作业控制块JCB：目的是为了管理和调度作业<code>(和PCB一样的道理)</code>，其保存了系统对作业进行管理和调度所需的全部信息，是作业在系统中存在的标志</p>
-<p>作业调度：根据作业控制块的信息，审查系统能否满足用户作业的资源需求，并按照一定算法，从外存的后备队列中选取作业调入内存，为其创建进程，分配所需要的资源，然后再将新创建的进程插入就绪队列</p>
-<h4 id="1-2-低级调度"><a href="#1-2-低级调度" class="headerlink" title="1. 2 低级调度"></a>1. 2 低级调度</h4><blockquote>
-<p>低级调度：又称进程调度或短程调度，所调度的对象是<strong>进程</strong>。</p>
-<p>低级调度用于决定就绪队列中的哪个进程应获得处理机资源</p>
-</blockquote>
-<p>｜低级调度的功能</p>
-<ol>
-<li>保存处理机的现场信息。处理机在调度时，首先要保存当前进程的处理机现场信息，以便之后恢复</li>
-<li>按某种算法选取进程。调度算法</li>
-<li>把处理器分配给进程。为选中的进行恢复处理机现场，将PCB控制块中的有关信息装入处理机</li>
-</ol>
-<p>｜低级调度三个基本机制</p>
-<ol>
-<li>排队器。系统中的所有就绪进程都应按照一定的方式进行排序</li>
-<li>分派器。取出选中进程，进行上下文切换，后分配处理机资源</li>
-<li>上下文切换。对处理机进行切换时，需要进行<strong>两对上下文切换</strong>：第一对：系统需要保存当前进行的上下文，并装入分派程序的上下文；第二对：移出分派程序，把新选中进程的CPU现场信息装入处理机</li>
-</ol>
-<p>｜进程调度的方式</p>
-<ol>
-<li>抢占式。允许调度程序根据某种原则去暂停正在执行的进程，并将处理机重新分配给其他进程<ol>
-<li>优先权原则</li>
-<li>短作业优先原则</li>
-<li>时间片原则</li>
-</ol>
-</li>
-<li>非抢占式。只要该进程正在运行，绝不会因为其他原因而进行中断。采用非抢占式调度方式，可能引起进程调度的因素：<ol>
-<li>进程执行完毕，或因为发生某时间而不能再继续执行</li>
-<li>执行中的进程因提出I/O请求而暂停执行</li>
-<li>在进程通信或同步过程执行1来某种原语操作</li>
-</ol>
-</li>
-</ol>
-<h4 id="1-3-中级调度"><a href="#1-3-中级调度" class="headerlink" title="1.3 中级调度"></a>1.3 中级调度</h4><blockquote>
-<p>中级调度：又称中程调度</p>
-<p>其目的是为了<strong>提高内存利用率和系统吞吐量</strong></p>
-</blockquote>
-<h3 id="2-调度算法的准则"><a href="#2-调度算法的准则" class="headerlink" title="2 调度算法的准则"></a>2 调度算法的准则</h3><h4 id="2-1-面向用户"><a href="#2-1-面向用户" class="headerlink" title="2.1 面向用户"></a>2.1 面向用户</h4><ol>
-<li>周转时间短。作业周转时间：从作业被提交给系统开始，到作业完成为止的这段时间间隔。<ol>
-<li>除此之外，平均周转时间，带权周转时间，平均带权周转时间都需要了解</li>
-</ol>
-</li>
-<li>响应时间快</li>
-<li>截止时间的保证</li>
-<li>优先权</li>
-</ol>
-<h4 id="2-2-面向系统"><a href="#2-2-面向系统" class="headerlink" title="2.2 面向系统"></a>2.2 面向系统</h4><ol>
-<li>系统吞吐量</li>
-<li>处理机利用率好</li>
-<li>各类资源平衡使用</li>
-</ol>
-<h3 id="3-调度算法"><a href="#3-调度算法" class="headerlink" title="3 调度算法"></a>3 调度算法</h3><h4 id="3-1-先来先服务—FCFS"><a href="#3-1-先来先服务—FCFS" class="headerlink" title="3.1 先来先服务—FCFS"></a>3.1 先来先服务—FCFS</h4><blockquote>
-<p>先来先服务即可以用于作业调度，也可以用于进程调度</p>
-</blockquote>
-<ol>
-<li>在作业调度采用该算法时，每次调度都从后备作业队列中选择一个或多个<strong>最先进入该队列的作业</strong>，将它们调入内容，分配资源，创建进程，然后放入就绪队列</li>
-<li>缺点。FCFS算法利于长作业/进程，不利于短作业/进程</li>
-</ol>
-<h4 id="3-2-短作业-进程-优先—SJ-P-F"><a href="#3-2-短作业-进程-优先—SJ-P-F" class="headerlink" title="3.2 短作业(进程)优先—SJ(P)F"></a>3.2 短作业(进程)优先—SJ(P)F</h4><blockquote>
-<p>短作业(进程)优先是止对短作业或短进程优先调度的算法。</p>
-</blockquote>
-<ol>
-<li>短作业优先SJF是从后备队列中选择一个或多个估计运行时间最短的作业，将它们调入内存运行</li>
-<li>短进程优先SPF是从后备队列中选择一个估计运行时间最短的进程，将处理机分配给他，使其一直运行直到执行完成或发生某事件而被阻塞</li>
-<li>缺点。对长作业不利，不能保证紧迫性作业/进程会被及时处理</li>
-</ol>
-<h4 id="3-3-高优先权优先调度"><a href="#3-3-高优先权优先调度" class="headerlink" title="3.3 高优先权优先调度"></a>3.3 高优先权优先调度</h4><p>｜优先权调度算法类型</p>
-<ol>
-<li>非抢占式优先权算法</li>
-<li>抢占式优先权算法。在当前进程执行时，若出现优先权比其更高的进程时，则立即停止当前进程的执行，进行进程的切换</li>
-</ol>
-<p>｜优先权类型</p>
-<ol>
-<li>静态优先权。在创建进程时确认，并且在执行过程中不会改变</li>
-<li>动态优先权。在创建进程时所赋予的优先权可以随进程的推进或等待时间的增加而改变，以便获得更好的性能</li>
-</ol>
-<p>｜高响应比优先算法</p>
+<h4 id="&#x9AD8;&#x7EA7;&#x8C03;&#x5EA6;">1.1 &#x9AD8;&#x7EA7;&#x8C03;&#x5EA6;</h4>
 <blockquote>
-<p>短作业优先的不足是长作业的运行不能得到保证。</p>
-<p>如果为每个作业赋予动态的优先权，并使作业的优先权等级随着时间的增加而提高，那么长作业在一定时间后，必然有机会分配到处理机</p>
+<p>&#x9AD8;&#x7EA7;&#x8C03;&#x5EA6;&#xFF1A;&#x53C8;&#x79F0;&#x4F5C;&#x4E1A;&#x8C03;&#x5EA6;&#x6216;&#x957F;&#x7A0B;&#x8C03;&#x5EA6;&#xFF0C;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x662F;&#x5C06;<strong>&#x5916;&#x5B58;&#x4E0A;&#x5904;&#x4E8E;&#x540E;&#x5907;&#x961F;&#x5217;&#x7684;&#x4F5C;&#x4E1A;&#x8C03;&#x5165;&#x5185;&#x5B58;</strong>&#xFF0C;&#x5176;&#x8C03;&#x5EA6;&#x5BF9;&#x8C61;&#x662F;<strong>&#x4F5C;&#x4E1A;</strong></p>
 </blockquote>
-<p>｜优先权的变化规律<br>$$<br>优先权 = \cfrac{等待时间 + 要求时间}{要求服务时间}<br>$$</p>
-<ol>
-<li>若作业等待时间相同，则服务时间越短，优先权越高。有利于短作业优先</li>
-<li>当要求服务时间相同，等待时间越长，优先权越高。先来先服务</li>
-<li>对于长作业，作业的优先级可以随着等待时间的增加而提高，当等待时间足够长时，便可以获得处理机</li>
-</ol>
-<h4 id="3-4-基于时间片的轮转调度算法"><a href="#3-4-基于时间片的轮转调度算法" class="headerlink" title="3.4 基于时间片的轮转调度算法"></a>3.4 基于时间片的轮转调度算法</h4><p>｜时间片轮转法</p>
-<p>｜基本原理</p>
-<p>早期的时间片轮转法中，系统将所有的就绪进程按先来先服务的原则排成一个队列，每次调度时，把CPU分配给队首进程，并令其执行一个时间片。当执行的时间片用完时，由计时器发出时钟中断请求，调度程序便据此信号来停止该进程的执行，并把处理机分配给就绪队列中新的队首进程，同时也让它执行一个时间片。</p>
-<p>｜多级反馈队列调度法</p>
-<img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419084641.png" style="zoom:50%;" />
-
-<p>｜基本原理</p>
-<ol>
-<li>设置多个就绪队列，并为各个队列赋予不同的优先级。第一个优先级最高，第二个队列次之，其余各队列的优先权逐个降低。该算法赋予各个队列中进程执行时间片的大小也各不相同，优先权高的队列中，为每个进程所规定的执行时间片就越小</li>
-<li>当一个新进程进入内存后，首先将它放入第一队列的末尾，按FCFS原则排队等待调度。当轮到该进程执行时，若它能在该时间片内完成，便可准备撤离系统；如果它在一个时间片结束时尚未完成，调度程序，调度程序便将其转入第二队列的末尾，同样按FCFS原则等待调度…</li>
-<li>仅当第一队列空闲时，调度程序才调度第二队列中的进程运行。若处理机正在第i队列中为某进程服务时，又有新的进程进入优先权较高的队列第1～i-1中，则此时新进程将抢占正在运行进程的处理机</li>
-</ol>
-<h3 id="4-实时调度"><a href="#4-实时调度" class="headerlink" title="4 实时调度"></a>4 实时调度</h3><blockquote>
-<p>实时系统中需要及时反馈，前面的算法不能满足实时系统对调度的要求，故引入实时调度</p>
+<p>&#x4F5C;&#x4E1A;&#xFF1A;&#x4F5C;&#x4E1A;&#x5305;&#x542B;&#x4E86;&#x7A0B;&#x5E8F;&#xFF0C;&#x6570;&#x636E;&#x4EE5;&#x53CA;&#x4F5C;&#x4E1A;&#x8BF4;&#x660E;&#x4E66;&#xFF0C;&#x7CFB;&#x7EDF;&#x662F;&#x6839;&#x636E;&#x8BE5;&#x8BF4;&#x660E;&#x4E66;&#x6765;&#x5BF9;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#x7684;&#x3002;</p>
+<p>&#x4F5C;&#x4E1A;&#x63A7;&#x5236;&#x5757;JCB&#xFF1A;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x7BA1;&#x7406;&#x548C;&#x8C03;&#x5EA6;&#x4F5C;&#x4E1A;<code>(&#x548C;PCB&#x4E00;&#x6837;&#x7684;&#x9053;&#x7406;)</code>&#xFF0C;&#x5176;&#x4FDD;&#x5B58;&#x4E86;&#x7CFB;&#x7EDF;&#x5BF9;&#x4F5C;&#x4E1A;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x548C;&#x8C03;&#x5EA6;&#x6240;&#x9700;&#x7684;&#x5168;&#x90E8;&#x4FE1;&#x606F;&#xFF0C;&#x662F;&#x4F5C;&#x4E1A;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B58;&#x5728;&#x7684;&#x6807;&#x5FD7;</p>
+<p>&#x4F5C;&#x4E1A;&#x8C03;&#x5EA6;&#xFF1A;&#x6839;&#x636E;&#x4F5C;&#x4E1A;&#x63A7;&#x5236;&#x5757;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5BA1;&#x67E5;&#x7CFB;&#x7EDF;&#x80FD;&#x5426;&#x6EE1;&#x8DB3;&#x7528;&#x6237;&#x4F5C;&#x4E1A;&#x7684;&#x8D44;&#x6E90;&#x9700;&#x6C42;&#xFF0C;&#x5E76;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x7B97;&#x6CD5;&#xFF0C;&#x4ECE;&#x5916;&#x5B58;&#x7684;&#x540E;&#x5907;&#x961F;&#x5217;&#x4E2D;&#x9009;&#x53D6;&#x4F5C;&#x4E1A;&#x8C03;&#x5165;&#x5185;&#x5B58;&#xFF0C;&#x4E3A;&#x5176;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#xFF0C;&#x5206;&#x914D;&#x6240;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5C06;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x8FDB;&#x7A0B;&#x63D2;&#x5165;&#x5C31;&#x7EEA;&#x961F;&#x5217;</p>
+<h4 id="&#x4F4E;&#x7EA7;&#x8C03;&#x5EA6;">1. 2 &#x4F4E;&#x7EA7;&#x8C03;&#x5EA6;</h4>
+<blockquote>
+<p>&#x4F4E;&#x7EA7;&#x8C03;&#x5EA6;&#xFF1A;&#x53C8;&#x79F0;&#x8FDB;&#x7A0B;&#x8C03;&#x5EA6;&#x6216;&#x77ED;&#x7A0B;&#x8C03;&#x5EA6;&#xFF0C;&#x6240;&#x8C03;&#x5EA6;&#x7684;&#x5BF9;&#x8C61;&#x662F;<strong>&#x8FDB;&#x7A0B;</strong>&#x3002;</p>
+<p>&#x4F4E;&#x7EA7;&#x8C03;&#x5EA6;&#x7528;&#x4E8E;&#x51B3;&#x5B9A;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x54EA;&#x4E2A;&#x8FDB;&#x7A0B;&#x5E94;&#x83B7;&#x5F97;&#x5904;&#x7406;&#x673A;&#x8D44;&#x6E90;</p>
 </blockquote>
-<h4 id="4-1-实现实时调度的基本条件"><a href="#4-1-实现实时调度的基本条件" class="headerlink" title="4.1 实现实时调度的基本条件"></a>4.1 实现实时调度的基本条件</h4><p>提供以下信息</p>
-<ol>
-<li>就绪时间。任务成为就绪状态的开始时间</li>
-<li>开始时间与截止时间。</li>
-<li>处理时间。任务从开始执行直到完成所需要的时间</li>
-<li>资源要求。执行该任务需要的资源</li>
-<li>优先级。</li>
+<p>&#xFF5C;&#x4F4E;&#x7EA7;&#x8C03;&#x5EA6;&#x7684;&#x529F;&#x80FD;</p>
+<ol type="1">
+<li>&#x4FDD;&#x5B58;&#x5904;&#x7406;&#x673A;&#x7684;&#x73B0;&#x573A;&#x4FE1;&#x606F;&#x3002;&#x5904;&#x7406;&#x673A;&#x5728;&#x8C03;&#x5EA6;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x7684;&#x5904;&#x7406;&#x673A;&#x73B0;&#x573A;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E4B;&#x540E;&#x6062;&#x590D;</li>
+<li>&#x6309;&#x67D0;&#x79CD;&#x7B97;&#x6CD5;&#x9009;&#x53D6;&#x8FDB;&#x7A0B;&#x3002;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</li>
+<li>&#x628A;&#x5904;&#x7406;&#x5668;&#x5206;&#x914D;&#x7ED9;&#x8FDB;&#x7A0B;&#x3002;&#x4E3A;&#x9009;&#x4E2D;&#x7684;&#x8FDB;&#x884C;&#x6062;&#x590D;&#x5904;&#x7406;&#x673A;&#x73B0;&#x573A;&#xFF0C;&#x5C06;PCB&#x63A7;&#x5236;&#x5757;&#x4E2D;&#x7684;&#x6709;&#x5173;&#x4FE1;&#x606F;&#x88C5;&#x5165;&#x5904;&#x7406;&#x673A;</li>
 </ol>
-<p>采用抢占式的调度机制</p>
-<p>具有快速切换机制</p>
-<h4 id="4-2-常见的实时调度算法"><a href="#4-2-常见的实时调度算法" class="headerlink" title="4.2 常见的实时调度算法"></a>4.2 常见的实时调度算法</h4><p>｜最早截止时间优先算法EDF</p>
-<p>该算法时根据任务的开始截止时间来确定任务的优先级。截止时间越早，其优先级越高。</p>
-<p>该算法要求在系统中保持一个实时任务就绪队列，该队列按各任务截止时间的早晚排序</p>
-<ol>
-<li>非抢占式调度方式</li>
-<li>抢占式调度方式</li>
+<p>&#xFF5C;&#x4F4E;&#x7EA7;&#x8C03;&#x5EA6;&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x673A;&#x5236;</p>
+<ol type="1">
+<li>&#x6392;&#x961F;&#x5668;&#x3002;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5C31;&#x7EEA;&#x8FDB;&#x7A0B;&#x90FD;&#x5E94;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</li>
+<li>&#x5206;&#x6D3E;&#x5668;&#x3002;&#x53D6;&#x51FA;&#x9009;&#x4E2D;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FDB;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#xFF0C;&#x540E;&#x5206;&#x914D;&#x5904;&#x7406;&#x673A;&#x8D44;&#x6E90;</li>
+<li>&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x3002;&#x5BF9;&#x5904;&#x7406;&#x673A;&#x8FDB;&#x884C;&#x5207;&#x6362;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;<strong>&#x4E24;&#x5BF9;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;</strong>&#xFF1A;&#x7B2C;&#x4E00;&#x5BF9;&#xFF1A;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x8FDB;&#x884C;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x5E76;&#x88C5;&#x5165;&#x5206;&#x6D3E;&#x7A0B;&#x5E8F;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF1B;&#x7B2C;&#x4E8C;&#x5BF9;&#xFF1A;&#x79FB;&#x51FA;&#x5206;&#x6D3E;&#x7A0B;&#x5E8F;&#xFF0C;&#x628A;&#x65B0;&#x9009;&#x4E2D;&#x8FDB;&#x7A0B;&#x7684;CPU&#x73B0;&#x573A;&#x4FE1;&#x606F;&#x88C5;&#x5165;&#x5904;&#x7406;&#x673A;</li>
 </ol>
-<p>｜最低松弛度优先算法LLF</p>
-<p>该算法根据任务的紧急程度来确定任务的优先级。紧急程度越高，其优先级越高</p>
-<p>系统中保持一个按松弛度排序的队列，该队列按松弛度由小到大进行排序</p>
-<p>例如：一个进程需要在200ms内完成，该进程本身的运行时间为100ms，那么其松弛程度为200ms-100ms=100ms</p>
-<h3 id="5-死锁"><a href="#5-死锁" class="headerlink" title="5 死锁"></a>5 死锁</h3><h4 id="5-1-产生死锁的原因"><a href="#5-1-产生死锁的原因" class="headerlink" title="5.1 产生死锁的原因"></a>5.1 产生死锁的原因</h4><ol>
-<li>竞争资源<ol>
-<li>竞争非剥夺性资源</li>
-<li>竞争临时性资源</li>
+<p>&#xFF5C;&#x8FDB;&#x7A0B;&#x8C03;&#x5EA6;&#x7684;&#x65B9;&#x5F0F;</p>
+<ol type="1">
+<li>&#x62A2;&#x5360;&#x5F0F;&#x3002;&#x5141;&#x8BB8;&#x8C03;&#x5EA6;&#x7A0B;&#x5E8F;&#x6839;&#x636E;&#x67D0;&#x79CD;&#x539F;&#x5219;&#x53BB;&#x6682;&#x505C;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E76;&#x5C06;&#x5904;&#x7406;&#x673A;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x7ED9;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;
+<ol type="1">
+<li>&#x4F18;&#x5148;&#x6743;&#x539F;&#x5219;</li>
+<li>&#x77ED;&#x4F5C;&#x4E1A;&#x4F18;&#x5148;&#x539F;&#x5219;</li>
+<li>&#x65F6;&#x95F4;&#x7247;&#x539F;&#x5219;</li>
+</ol></li>
+<li>&#x975E;&#x62A2;&#x5360;&#x5F0F;&#x3002;&#x53EA;&#x8981;&#x8BE5;&#x8FDB;&#x7A0B;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#xFF0C;&#x7EDD;&#x4E0D;&#x4F1A;&#x56E0;&#x4E3A;&#x5176;&#x4ED6;&#x539F;&#x56E0;&#x800C;&#x8FDB;&#x884C;&#x4E2D;&#x65AD;&#x3002;&#x91C7;&#x7528;&#x975E;&#x62A2;&#x5360;&#x5F0F;&#x8C03;&#x5EA6;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x80FD;&#x5F15;&#x8D77;&#x8FDB;&#x7A0B;&#x8C03;&#x5EA6;&#x7684;&#x56E0;&#x7D20;&#xFF1A;
+<ol type="1">
+<li>&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x6216;&#x56E0;&#x4E3A;&#x53D1;&#x751F;&#x67D0;&#x65F6;&#x95F4;&#x800C;&#x4E0D;&#x80FD;&#x518D;&#x7EE7;&#x7EED;&#x6267;&#x884C;</li>
+<li>&#x6267;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x56E0;&#x63D0;&#x51FA;I/O&#x8BF7;&#x6C42;&#x800C;&#x6682;&#x505C;&#x6267;&#x884C;</li>
+<li>&#x5728;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#x6216;&#x540C;&#x6B65;&#x8FC7;&#x7A0B;&#x6267;&#x884C;1&#x6765;&#x67D0;&#x79CD;&#x539F;&#x8BED;&#x64CD;&#x4F5C;</li>
+</ol></li>
 </ol>
-</li>
-<li>进程间推进顺序非法</li>
-</ol>
-<h4 id="5-2-产生死锁的必要条件"><a href="#5-2-产生死锁的必要条件" class="headerlink" title="5.2 产生死锁的必要条件"></a>5.2 产生死锁的必要条件</h4><ol>
-<li>互斥条件。进程对所分配到的资源进行排他性使用，一段时间内某资源只由一个进程占用</li>
-<li>持有并请求。进程已经保持了持有了至少一个资源，但又提出新的资源请求，而该资源又被其他进程所持有</li>
-<li>不可剥夺。进程已获得的资源，在未使用完之前，不能被剥夺</li>
-<li>环路等待。资源的环形链</li>
-</ol>
-<h3 id="6-预防死锁"><a href="#6-预防死锁" class="headerlink" title="6 预防死锁"></a>6 预防死锁</h3><blockquote>
-<p>使形成死锁的必要条件2，3，4不成立即可</p>
+<h4 id="&#x4E2D;&#x7EA7;&#x8C03;&#x5EA6;">1.3 &#x4E2D;&#x7EA7;&#x8C03;&#x5EA6;</h4>
+<blockquote>
+<p>&#x4E2D;&#x7EA7;&#x8C03;&#x5EA6;&#xFF1A;&#x53C8;&#x79F0;&#x4E2D;&#x7A0B;&#x8C03;&#x5EA6;</p>
+<p>&#x5176;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;<strong>&#x63D0;&#x9AD8;&#x5185;&#x5B58;&#x5229;&#x7528;&#x7387;&#x548C;&#x7CFB;&#x7EDF;&#x541E;&#x5410;&#x91CF;</strong></p>
 </blockquote>
-<ol>
-<li>摒弃“请求和保持条件”。规定开始运行的进程，必须一次性申请所执行的所有资源</li>
-<li>摒弃“不可剥夺条件”。当一个持有的进程再提出请求资源而不被满足时，需释放自己所持有的资源</li>
-<li>摒弃“环路等待条件”。将系统所有的资源按类型线性排队，并赋予不同序号。所有进程对资源的请求必须按照序号的递增次序提出资源请求</li>
+<h3 id="&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;&#x7684;&#x51C6;&#x5219;">2 &#x8C03;&#x5EA6;&#x7B97;&#x6CD5;&#x7684;&#x51C6;&#x5219;</h3>
+<h4 id="&#x9762;&#x5411;&#x7528;&#x6237;">2.1 &#x9762;&#x5411;&#x7528;&#x6237;</h4>
+<ol type="1">
+<li>&#x5468;&#x8F6C;&#x65F6;&#x95F4;&#x77ED;&#x3002;&#x4F5C;&#x4E1A;&#x5468;&#x8F6C;&#x65F6;&#x95F4;&#xFF1A;&#x4ECE;&#x4F5C;&#x4E1A;&#x88AB;&#x63D0;&#x4EA4;&#x7ED9;&#x7CFB;&#x7EDF;&#x5F00;&#x59CB;&#xFF0C;&#x5230;&#x4F5C;&#x4E1A;&#x5B8C;&#x6210;&#x4E3A;&#x6B62;&#x7684;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x3002;
+<ol type="1">
+<li>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x5E73;&#x5747;&#x5468;&#x8F6C;&#x65F6;&#x95F4;&#xFF0C;&#x5E26;&#x6743;&#x5468;&#x8F6C;&#x65F6;&#x95F4;&#xFF0C;&#x5E73;&#x5747;&#x5E26;&#x6743;&#x5468;&#x8F6C;&#x65F6;&#x95F4;&#x90FD;&#x9700;&#x8981;&#x4E86;&#x89E3;</li>
+</ol></li>
+<li>&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x5FEB;</li>
+<li>&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x7684;&#x4FDD;&#x8BC1;</li>
+<li>&#x4F18;&#x5148;&#x6743;</li>
+</ol>
+<h4 id="&#x9762;&#x5411;&#x7CFB;&#x7EDF;">2.2 &#x9762;&#x5411;&#x7CFB;&#x7EDF;</h4>
+<ol type="1">
+<li>&#x7CFB;&#x7EDF;&#x541E;&#x5410;&#x91CF;</li>
+<li>&#x5904;&#x7406;&#x673A;&#x5229;&#x7528;&#x7387;&#x597D;</li>
+<li>&#x5404;&#x7C7B;&#x8D44;&#x6E90;&#x5E73;&#x8861;&#x4F7F;&#x7528;</li>
+</ol>
+<h3 id="&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;">3 &#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</h3>
+<h4 id="&#x5148;&#x6765;&#x5148;&#x670D;&#x52A1;---fcfs">3.1 &#x5148;&#x6765;&#x5148;&#x670D;&#x52A1;---FCFS</h4>
+<blockquote>
+<p>&#x5148;&#x6765;&#x5148;&#x670D;&#x52A1;&#x5373;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4F5C;&#x4E1A;&#x8C03;&#x5EA6;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8FDB;&#x7A0B;&#x8C03;&#x5EA6;</p>
+</blockquote>
+<ol type="1">
+<li>&#x5728;&#x4F5C;&#x4E1A;&#x8C03;&#x5EA6;&#x91C7;&#x7528;&#x8BE5;&#x7B97;&#x6CD5;&#x65F6;&#xFF0C;&#x6BCF;&#x6B21;&#x8C03;&#x5EA6;&#x90FD;&#x4ECE;&#x540E;&#x5907;&#x4F5C;&#x4E1A;&#x961F;&#x5217;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;<strong>&#x6700;&#x5148;&#x8FDB;&#x5165;&#x8BE5;&#x961F;&#x5217;&#x7684;&#x4F5C;&#x4E1A;</strong>&#xFF0C;&#x5C06;&#x5B83;&#x4EEC;&#x8C03;&#x5165;&#x5185;&#x5BB9;&#xFF0C;&#x5206;&#x914D;&#x8D44;&#x6E90;&#xFF0C;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x653E;&#x5165;&#x5C31;&#x7EEA;&#x961F;&#x5217;</li>
+<li>&#x7F3A;&#x70B9;&#x3002;FCFS&#x7B97;&#x6CD5;&#x5229;&#x4E8E;&#x957F;&#x4F5C;&#x4E1A;/&#x8FDB;&#x7A0B;&#xFF0C;&#x4E0D;&#x5229;&#x4E8E;&#x77ED;&#x4F5C;&#x4E1A;/&#x8FDB;&#x7A0B;</li>
+</ol>
+<h4 id="&#x77ED;&#x4F5C;&#x4E1A;&#x8FDB;&#x7A0B;&#x4F18;&#x5148;---sjpf">3.2 &#x77ED;&#x4F5C;&#x4E1A;(&#x8FDB;&#x7A0B;)&#x4F18;&#x5148;---SJ(P)F</h4>
+<blockquote>
+<p>&#x77ED;&#x4F5C;&#x4E1A;(&#x8FDB;&#x7A0B;)&#x4F18;&#x5148;&#x662F;&#x6B62;&#x5BF9;&#x77ED;&#x4F5C;&#x4E1A;&#x6216;&#x77ED;&#x8FDB;&#x7A0B;&#x4F18;&#x5148;&#x8C03;&#x5EA6;&#x7684;&#x7B97;&#x6CD5;&#x3002;</p>
+</blockquote>
+<ol type="1">
+<li>&#x77ED;&#x4F5C;&#x4E1A;&#x4F18;&#x5148;SJF&#x662F;&#x4ECE;&#x540E;&#x5907;&#x961F;&#x5217;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x4F30;&#x8BA1;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x6700;&#x77ED;&#x7684;&#x4F5C;&#x4E1A;&#xFF0C;&#x5C06;&#x5B83;&#x4EEC;&#x8C03;&#x5165;&#x5185;&#x5B58;&#x8FD0;&#x884C;</li>
+<li>&#x77ED;&#x8FDB;&#x7A0B;&#x4F18;&#x5148;SPF&#x662F;&#x4ECE;&#x540E;&#x5907;&#x961F;&#x5217;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4F30;&#x8BA1;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x6700;&#x77ED;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5C06;&#x5904;&#x7406;&#x673A;&#x5206;&#x914D;&#x7ED9;&#x4ED6;&#xFF0C;&#x4F7F;&#x5176;&#x4E00;&#x76F4;&#x8FD0;&#x884C;&#x76F4;&#x5230;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x6216;&#x53D1;&#x751F;&#x67D0;&#x4E8B;&#x4EF6;&#x800C;&#x88AB;&#x963B;&#x585E;</li>
+<li>&#x7F3A;&#x70B9;&#x3002;&#x5BF9;&#x957F;&#x4F5C;&#x4E1A;&#x4E0D;&#x5229;&#xFF0C;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x7D27;&#x8FEB;&#x6027;&#x4F5C;&#x4E1A;/&#x8FDB;&#x7A0B;&#x4F1A;&#x88AB;&#x53CA;&#x65F6;&#x5904;&#x7406;</li>
+</ol>
+<h4 id="&#x9AD8;&#x4F18;&#x5148;&#x6743;&#x4F18;&#x5148;&#x8C03;&#x5EA6;">3.3 &#x9AD8;&#x4F18;&#x5148;&#x6743;&#x4F18;&#x5148;&#x8C03;&#x5EA6;</h4>
+<p>&#xFF5C;&#x4F18;&#x5148;&#x6743;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;&#x7C7B;&#x578B;</p>
+<ol type="1">
+<li>&#x975E;&#x62A2;&#x5360;&#x5F0F;&#x4F18;&#x5148;&#x6743;&#x7B97;&#x6CD5;</li>
+<li>&#x62A2;&#x5360;&#x5F0F;&#x4F18;&#x5148;&#x6743;&#x7B97;&#x6CD5;&#x3002;&#x5728;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x82E5;&#x51FA;&#x73B0;&#x4F18;&#x5148;&#x6743;&#x6BD4;&#x5176;&#x66F4;&#x9AD8;&#x7684;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x5219;&#x7ACB;&#x5373;&#x505C;&#x6B62;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x8FDB;&#x884C;&#x8FDB;&#x7A0B;&#x7684;&#x5207;&#x6362;</li>
+</ol>
+<p>&#xFF5C;&#x4F18;&#x5148;&#x6743;&#x7C7B;&#x578B;</p>
+<ol type="1">
+<li>&#x9759;&#x6001;&#x4F18;&#x5148;&#x6743;&#x3002;&#x5728;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x65F6;&#x786E;&#x8BA4;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;</li>
+<li>&#x52A8;&#x6001;&#x4F18;&#x5148;&#x6743;&#x3002;&#x5728;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x65F6;&#x6240;&#x8D4B;&#x4E88;&#x7684;&#x4F18;&#x5148;&#x6743;&#x53EF;&#x4EE5;&#x968F;&#x8FDB;&#x7A0B;&#x7684;&#x63A8;&#x8FDB;&#x6216;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x7684;&#x589E;&#x52A0;&#x800C;&#x6539;&#x53D8;&#xFF0C;&#x4EE5;&#x4FBF;&#x83B7;&#x5F97;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;</li>
+</ol>
+<p>&#xFF5C;&#x9AD8;&#x54CD;&#x5E94;&#x6BD4;&#x4F18;&#x5148;&#x7B97;&#x6CD5;</p>
+<blockquote>
+<p>&#x77ED;&#x4F5C;&#x4E1A;&#x4F18;&#x5148;&#x7684;&#x4E0D;&#x8DB3;&#x662F;&#x957F;&#x4F5C;&#x4E1A;&#x7684;&#x8FD0;&#x884C;&#x4E0D;&#x80FD;&#x5F97;&#x5230;&#x4FDD;&#x8BC1;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E3A;&#x6BCF;&#x4E2A;&#x4F5C;&#x4E1A;&#x8D4B;&#x4E88;&#x52A8;&#x6001;&#x7684;&#x4F18;&#x5148;&#x6743;&#xFF0C;&#x5E76;&#x4F7F;&#x4F5C;&#x4E1A;&#x7684;&#x4F18;&#x5148;&#x6743;&#x7B49;&#x7EA7;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x589E;&#x52A0;&#x800C;&#x63D0;&#x9AD8;&#xFF0C;&#x90A3;&#x4E48;&#x957F;&#x4F5C;&#x4E1A;&#x5728;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x5FC5;&#x7136;&#x6709;&#x673A;&#x4F1A;&#x5206;&#x914D;&#x5230;&#x5904;&#x7406;&#x673A;</p>
+</blockquote>
+<p>&#xFF5C;&#x4F18;&#x5148;&#x6743;&#x7684;&#x53D8;&#x5316;&#x89C4;&#x5F8B; <span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x4F18;</mi><mi mathvariant="normal">&#x5148;</mi><mi mathvariant="normal">&#x6743;</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">&#x7B49;</mi><mi mathvariant="normal">&#x5F85;</mi><mi mathvariant="normal">&#x65F6;</mi><mi mathvariant="normal">&#x95F4;</mi><mo>+</mo><mi mathvariant="normal">&#x8981;</mi><mi mathvariant="normal">&#x6C42;</mi><mi mathvariant="normal">&#x65F6;</mi><mi mathvariant="normal">&#x95F4;</mi></mrow><mrow><mi mathvariant="normal">&#x8981;</mi><mi mathvariant="normal">&#x6C42;</mi><mi mathvariant="normal">&#x670D;</mi><mi mathvariant="normal">&#x52A1;</mi><mi mathvariant="normal">&#x65F6;</mi><mi mathvariant="normal">&#x95F4;</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+&#x4F18;&#x5148;&#x6743; = \cfrac{&#x7B49;&#x5F85;&#x65F6;&#x95F4; + &#x8981;&#x6C42;&#x65F6;&#x95F4;}{&#x8981;&#x6C42;&#x670D;&#x52A1;&#x65F6;&#x95F4;}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">&#x4F18;</span><span class="mord cjk_fallback">&#x5148;</span><span class="mord cjk_fallback">&#x6743;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5899999999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">&#x8981;</span><span class="mord cjk_fallback">&#x6C42;</span><span class="mord cjk_fallback">&#x670D;</span><span class="mord cjk_fallback">&#x52A1;</span><span class="mord cjk_fallback">&#x65F6;</span><span class="mord cjk_fallback">&#x95F4;</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">&#x7B49;</span><span class="mord cjk_fallback">&#x5F85;</span><span class="mord cjk_fallback">&#x65F6;</span><span class="mord cjk_fallback">&#x95F4;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord cjk_fallback">&#x8981;</span><span class="mord cjk_fallback">&#x6C42;</span><span class="mord cjk_fallback">&#x65F6;</span><span class="mord cjk_fallback">&#x95F4;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span></span></span></span></span></p>
+<ol type="1">
+<li>&#x82E5;&#x4F5C;&#x4E1A;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x670D;&#x52A1;&#x65F6;&#x95F4;&#x8D8A;&#x77ED;&#xFF0C;&#x4F18;&#x5148;&#x6743;&#x8D8A;&#x9AD8;&#x3002;&#x6709;&#x5229;&#x4E8E;&#x77ED;&#x4F5C;&#x4E1A;&#x4F18;&#x5148;</li>
+<li>&#x5F53;&#x8981;&#x6C42;&#x670D;&#x52A1;&#x65F6;&#x95F4;&#x76F8;&#x540C;&#xFF0C;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x8D8A;&#x957F;&#xFF0C;&#x4F18;&#x5148;&#x6743;&#x8D8A;&#x9AD8;&#x3002;&#x5148;&#x6765;&#x5148;&#x670D;&#x52A1;</li>
+<li>&#x5BF9;&#x4E8E;&#x957F;&#x4F5C;&#x4E1A;&#xFF0C;&#x4F5C;&#x4E1A;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x53EF;&#x4EE5;&#x968F;&#x7740;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x7684;&#x589E;&#x52A0;&#x800C;&#x63D0;&#x9AD8;&#xFF0C;&#x5F53;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x8DB3;&#x591F;&#x957F;&#x65F6;&#xFF0C;&#x4FBF;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x5904;&#x7406;&#x673A;</li>
+</ol>
+<h4 id="&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7247;&#x7684;&#x8F6E;&#x8F6C;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;">3.4 &#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7247;&#x7684;&#x8F6E;&#x8F6C;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</h4>
+<p>&#xFF5C;&#x65F6;&#x95F4;&#x7247;&#x8F6E;&#x8F6C;&#x6CD5;</p>
+<p>&#xFF5C;&#x57FA;&#x672C;&#x539F;&#x7406;</p>
+<p>&#x65E9;&#x671F;&#x7684;&#x65F6;&#x95F4;&#x7247;&#x8F6E;&#x8F6C;&#x6CD5;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x6240;&#x6709;&#x7684;&#x5C31;&#x7EEA;&#x8FDB;&#x7A0B;&#x6309;&#x5148;&#x6765;&#x5148;&#x670D;&#x52A1;&#x7684;&#x539F;&#x5219;&#x6392;&#x6210;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#xFF0C;&#x6BCF;&#x6B21;&#x8C03;&#x5EA6;&#x65F6;&#xFF0C;&#x628A;CPU&#x5206;&#x914D;&#x7ED9;&#x961F;&#x9996;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E76;&#x4EE4;&#x5176;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x7247;&#x3002;&#x5F53;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x7247;&#x7528;&#x5B8C;&#x65F6;&#xFF0C;&#x7531;&#x8BA1;&#x65F6;&#x5668;&#x53D1;&#x51FA;&#x65F6;&#x949F;&#x4E2D;&#x65AD;&#x8BF7;&#x6C42;&#xFF0C;&#x8C03;&#x5EA6;&#x7A0B;&#x5E8F;&#x4FBF;&#x636E;&#x6B64;&#x4FE1;&#x53F7;&#x6765;&#x505C;&#x6B62;&#x8BE5;&#x8FDB;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x628A;&#x5904;&#x7406;&#x673A;&#x5206;&#x914D;&#x7ED9;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#x4E2D;&#x65B0;&#x7684;&#x961F;&#x9996;&#x8FDB;&#x7A0B;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x8BA9;&#x5B83;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x7247;&#x3002;</p>
+<p>&#xFF5C;&#x591A;&#x7EA7;&#x53CD;&#x9988;&#x961F;&#x5217;&#x8C03;&#x5EA6;&#x6CD5;</p>
+<p><img src="https://supers1.oss-cn-hangzhou.aliyuncs.com/20210419084641.png" style="zoom:50%;"></p>
+<p>&#xFF5C;&#x57FA;&#x672C;&#x539F;&#x7406;</p>
+<ol type="1">
+<li>&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#xFF0C;&#x5E76;&#x4E3A;&#x5404;&#x4E2A;&#x961F;&#x5217;&#x8D4B;&#x4E88;&#x4E0D;&#x540C;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x961F;&#x5217;&#x6B21;&#x4E4B;&#xFF0C;&#x5176;&#x4F59;&#x5404;&#x961F;&#x5217;&#x7684;&#x4F18;&#x5148;&#x6743;&#x9010;&#x4E2A;&#x964D;&#x4F4E;&#x3002;&#x8BE5;&#x7B97;&#x6CD5;&#x8D4B;&#x4E88;&#x5404;&#x4E2A;&#x961F;&#x5217;&#x4E2D;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x7247;&#x7684;&#x5927;&#x5C0F;&#x4E5F;&#x5404;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x4F18;&#x5148;&#x6743;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x6240;&#x89C4;&#x5B9A;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x7247;&#x5C31;&#x8D8A;&#x5C0F;</li>
+<li>&#x5F53;&#x4E00;&#x4E2A;&#x65B0;&#x8FDB;&#x7A0B;&#x8FDB;&#x5165;&#x5185;&#x5B58;&#x540E;&#xFF0C;&#x9996;&#x5148;&#x5C06;&#x5B83;&#x653E;&#x5165;&#x7B2C;&#x4E00;&#x961F;&#x5217;&#x7684;&#x672B;&#x5C3E;&#xFF0C;&#x6309;FCFS&#x539F;&#x5219;&#x6392;&#x961F;&#x7B49;&#x5F85;&#x8C03;&#x5EA6;&#x3002;&#x5F53;&#x8F6E;&#x5230;&#x8BE5;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x82E5;&#x5B83;&#x80FD;&#x5728;&#x8BE5;&#x65F6;&#x95F4;&#x7247;&#x5185;&#x5B8C;&#x6210;&#xFF0C;&#x4FBF;&#x53EF;&#x51C6;&#x5907;&#x64A4;&#x79BB;&#x7CFB;&#x7EDF;&#xFF1B;&#x5982;&#x679C;&#x5B83;&#x5728;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x7247;&#x7ED3;&#x675F;&#x65F6;&#x5C1A;&#x672A;&#x5B8C;&#x6210;&#xFF0C;&#x8C03;&#x5EA6;&#x7A0B;&#x5E8F;&#xFF0C;&#x8C03;&#x5EA6;&#x7A0B;&#x5E8F;&#x4FBF;&#x5C06;&#x5176;&#x8F6C;&#x5165;&#x7B2C;&#x4E8C;&#x961F;&#x5217;&#x7684;&#x672B;&#x5C3E;&#xFF0C;&#x540C;&#x6837;&#x6309;FCFS&#x539F;&#x5219;&#x7B49;&#x5F85;&#x8C03;&#x5EA6;...</li>
+<li>&#x4EC5;&#x5F53;&#x7B2C;&#x4E00;&#x961F;&#x5217;&#x7A7A;&#x95F2;&#x65F6;&#xFF0C;&#x8C03;&#x5EA6;&#x7A0B;&#x5E8F;&#x624D;&#x8C03;&#x5EA6;&#x7B2C;&#x4E8C;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x3002;&#x82E5;&#x5904;&#x7406;&#x673A;&#x6B63;&#x5728;&#x7B2C;i&#x961F;&#x5217;&#x4E2D;&#x4E3A;&#x67D0;&#x8FDB;&#x7A0B;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x53C8;&#x6709;&#x65B0;&#x7684;&#x8FDB;&#x7A0B;&#x8FDB;&#x5165;&#x4F18;&#x5148;&#x6743;&#x8F83;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x7B2C;1&#xFF5E;i-1&#x4E2D;&#xFF0C;&#x5219;&#x6B64;&#x65F6;&#x65B0;&#x8FDB;&#x7A0B;&#x5C06;&#x62A2;&#x5360;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x8FDB;&#x7A0B;&#x7684;&#x5904;&#x7406;&#x673A;</li>
+</ol>
+<h3 id="&#x5B9E;&#x65F6;&#x8C03;&#x5EA6;">4 &#x5B9E;&#x65F6;&#x8C03;&#x5EA6;</h3>
+<blockquote>
+<p>&#x5B9E;&#x65F6;&#x7CFB;&#x7EDF;&#x4E2D;&#x9700;&#x8981;&#x53CA;&#x65F6;&#x53CD;&#x9988;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x7B97;&#x6CD5;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x5B9E;&#x65F6;&#x7CFB;&#x7EDF;&#x5BF9;&#x8C03;&#x5EA6;&#x7684;&#x8981;&#x6C42;&#xFF0C;&#x6545;&#x5F15;&#x5165;&#x5B9E;&#x65F6;&#x8C03;&#x5EA6;</p>
+</blockquote>
+<h4 id="&#x5B9E;&#x73B0;&#x5B9E;&#x65F6;&#x8C03;&#x5EA6;&#x7684;&#x57FA;&#x672C;&#x6761;&#x4EF6;">4.1 &#x5B9E;&#x73B0;&#x5B9E;&#x65F6;&#x8C03;&#x5EA6;&#x7684;&#x57FA;&#x672C;&#x6761;&#x4EF6;</h4>
+<p>&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4FE1;&#x606F;</p>
+<ol type="1">
+<li>&#x5C31;&#x7EEA;&#x65F6;&#x95F4;&#x3002;&#x4EFB;&#x52A1;&#x6210;&#x4E3A;&#x5C31;&#x7EEA;&#x72B6;&#x6001;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;</li>
+<li>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x4E0E;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x5904;&#x7406;&#x65F6;&#x95F4;&#x3002;&#x4EFB;&#x52A1;&#x4ECE;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x76F4;&#x5230;&#x5B8C;&#x6210;&#x6240;&#x9700;&#x8981;&#x7684;&#x65F6;&#x95F4;</li>
+<li>&#x8D44;&#x6E90;&#x8981;&#x6C42;&#x3002;&#x6267;&#x884C;&#x8BE5;&#x4EFB;&#x52A1;&#x9700;&#x8981;&#x7684;&#x8D44;&#x6E90;</li>
+<li>&#x4F18;&#x5148;&#x7EA7;&#x3002;</li>
+</ol>
+<p>&#x91C7;&#x7528;&#x62A2;&#x5360;&#x5F0F;&#x7684;&#x8C03;&#x5EA6;&#x673A;&#x5236;</p>
+<p>&#x5177;&#x6709;&#x5FEB;&#x901F;&#x5207;&#x6362;&#x673A;&#x5236;</p>
+<h4 id="&#x5E38;&#x89C1;&#x7684;&#x5B9E;&#x65F6;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;">4.2 &#x5E38;&#x89C1;&#x7684;&#x5B9E;&#x65F6;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</h4>
+<p>&#xFF5C;&#x6700;&#x65E9;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x4F18;&#x5148;&#x7B97;&#x6CD5;EDF</p>
+<p>&#x8BE5;&#x7B97;&#x6CD5;&#x65F6;&#x6839;&#x636E;&#x4EFB;&#x52A1;&#x7684;&#x5F00;&#x59CB;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x6765;&#x786E;&#x5B9A;&#x4EFB;&#x52A1;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x8D8A;&#x65E9;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x3002;</p>
+<p>&#x8BE5;&#x7B97;&#x6CD5;&#x8981;&#x6C42;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x4FDD;&#x6301;&#x4E00;&#x4E2A;&#x5B9E;&#x65F6;&#x4EFB;&#x52A1;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#xFF0C;&#x8BE5;&#x961F;&#x5217;&#x6309;&#x5404;&#x4EFB;&#x52A1;&#x622A;&#x6B62;&#x65F6;&#x95F4;&#x7684;&#x65E9;&#x665A;&#x6392;&#x5E8F;</p>
+<ol type="1">
+<li>&#x975E;&#x62A2;&#x5360;&#x5F0F;&#x8C03;&#x5EA6;&#x65B9;&#x5F0F;</li>
+<li>&#x62A2;&#x5360;&#x5F0F;&#x8C03;&#x5EA6;&#x65B9;&#x5F0F;</li>
+</ol>
+<p>&#xFF5C;&#x6700;&#x4F4E;&#x677E;&#x5F1B;&#x5EA6;&#x4F18;&#x5148;&#x7B97;&#x6CD5;LLF</p>
+<p>&#x8BE5;&#x7B97;&#x6CD5;&#x6839;&#x636E;&#x4EFB;&#x52A1;&#x7684;&#x7D27;&#x6025;&#x7A0B;&#x5EA6;&#x6765;&#x786E;&#x5B9A;&#x4EFB;&#x52A1;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;&#x7D27;&#x6025;&#x7A0B;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;</p>
+<p>&#x7CFB;&#x7EDF;&#x4E2D;&#x4FDD;&#x6301;&#x4E00;&#x4E2A;&#x6309;&#x677E;&#x5F1B;&#x5EA6;&#x6392;&#x5E8F;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x8BE5;&#x961F;&#x5217;&#x6309;&#x677E;&#x5F1B;&#x5EA6;&#x7531;&#x5C0F;&#x5230;&#x5927;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x5728;200ms&#x5185;&#x5B8C;&#x6210;&#xFF0C;&#x8BE5;&#x8FDB;&#x7A0B;&#x672C;&#x8EAB;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x4E3A;100ms&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x677E;&#x5F1B;&#x7A0B;&#x5EA6;&#x4E3A;200ms-100ms=100ms</p>
+<h3 id="&#x6B7B;&#x9501;">5 &#x6B7B;&#x9501;</h3>
+<h4 id="&#x4EA7;&#x751F;&#x6B7B;&#x9501;&#x7684;&#x539F;&#x56E0;">5.1 &#x4EA7;&#x751F;&#x6B7B;&#x9501;&#x7684;&#x539F;&#x56E0;</h4>
+<ol type="1">
+<li>&#x7ADE;&#x4E89;&#x8D44;&#x6E90;
+<ol type="1">
+<li>&#x7ADE;&#x4E89;&#x975E;&#x5265;&#x593A;&#x6027;&#x8D44;&#x6E90;</li>
+<li>&#x7ADE;&#x4E89;&#x4E34;&#x65F6;&#x6027;&#x8D44;&#x6E90;</li>
+</ol></li>
+<li>&#x8FDB;&#x7A0B;&#x95F4;&#x63A8;&#x8FDB;&#x987A;&#x5E8F;&#x975E;&#x6CD5;</li>
+</ol>
+<h4 id="&#x4EA7;&#x751F;&#x6B7B;&#x9501;&#x7684;&#x5FC5;&#x8981;&#x6761;&#x4EF6;">5.2 &#x4EA7;&#x751F;&#x6B7B;&#x9501;&#x7684;&#x5FC5;&#x8981;&#x6761;&#x4EF6;</h4>
+<ol type="1">
+<li>&#x4E92;&#x65A5;&#x6761;&#x4EF6;&#x3002;&#x8FDB;&#x7A0B;&#x5BF9;&#x6240;&#x5206;&#x914D;&#x5230;&#x7684;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x6392;&#x4ED6;&#x6027;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x67D0;&#x8D44;&#x6E90;&#x53EA;&#x7531;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5360;&#x7528;</li>
+<li>&#x6301;&#x6709;&#x5E76;&#x8BF7;&#x6C42;&#x3002;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x4FDD;&#x6301;&#x4E86;&#x6301;&#x6709;&#x4E86;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#xFF0C;&#x4F46;&#x53C8;&#x63D0;&#x51FA;&#x65B0;&#x7684;&#x8D44;&#x6E90;&#x8BF7;&#x6C42;&#xFF0C;&#x800C;&#x8BE5;&#x8D44;&#x6E90;&#x53C8;&#x88AB;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x6240;&#x6301;&#x6709;</li>
+<li>&#x4E0D;&#x53EF;&#x5265;&#x593A;&#x3002;&#x8FDB;&#x7A0B;&#x5DF2;&#x83B7;&#x5F97;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5728;&#x672A;&#x4F7F;&#x7528;&#x5B8C;&#x4E4B;&#x524D;&#xFF0C;&#x4E0D;&#x80FD;&#x88AB;&#x5265;&#x593A;</li>
+<li>&#x73AF;&#x8DEF;&#x7B49;&#x5F85;&#x3002;&#x8D44;&#x6E90;&#x7684;&#x73AF;&#x5F62;&#x94FE;</li>
+</ol>
+<h3 id="&#x9884;&#x9632;&#x6B7B;&#x9501;">6 &#x9884;&#x9632;&#x6B7B;&#x9501;</h3>
+<blockquote>
+<p>&#x4F7F;&#x5F62;&#x6210;&#x6B7B;&#x9501;&#x7684;&#x5FC5;&#x8981;&#x6761;&#x4EF6;2&#xFF0C;3&#xFF0C;4&#x4E0D;&#x6210;&#x7ACB;&#x5373;&#x53EF;</p>
+</blockquote>
+<ol type="1">
+<li>&#x6452;&#x5F03;&#x201C;&#x8BF7;&#x6C42;&#x548C;&#x4FDD;&#x6301;&#x6761;&#x4EF6;&#x201D;&#x3002;&#x89C4;&#x5B9A;&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5FC5;&#x987B;&#x4E00;&#x6B21;&#x6027;&#x7533;&#x8BF7;&#x6240;&#x6267;&#x884C;&#x7684;&#x6240;&#x6709;&#x8D44;&#x6E90;</li>
+<li>&#x6452;&#x5F03;&#x201C;&#x4E0D;&#x53EF;&#x5265;&#x593A;&#x6761;&#x4EF6;&#x201D;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x6301;&#x6709;&#x7684;&#x8FDB;&#x7A0B;&#x518D;&#x63D0;&#x51FA;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x800C;&#x4E0D;&#x88AB;&#x6EE1;&#x8DB3;&#x65F6;&#xFF0C;&#x9700;&#x91CA;&#x653E;&#x81EA;&#x5DF1;&#x6240;&#x6301;&#x6709;&#x7684;&#x8D44;&#x6E90;</li>
+<li>&#x6452;&#x5F03;&#x201C;&#x73AF;&#x8DEF;&#x7B49;&#x5F85;&#x6761;&#x4EF6;&#x201D;&#x3002;&#x5C06;&#x7CFB;&#x7EDF;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x6309;&#x7C7B;&#x578B;&#x7EBF;&#x6027;&#x6392;&#x961F;&#xFF0C;&#x5E76;&#x8D4B;&#x4E88;&#x4E0D;&#x540C;&#x5E8F;&#x53F7;&#x3002;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x6309;&#x7167;&#x5E8F;&#x53F7;&#x7684;&#x9012;&#x589E;&#x6B21;&#x5E8F;&#x63D0;&#x51FA;&#x8D44;&#x6E90;&#x8BF7;&#x6C42;</li>
 </ol>
 
     

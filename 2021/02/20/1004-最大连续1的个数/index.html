@@ -10,15 +10,16 @@
     <meta name="author" content="John Doe">
   
   
-    <meta name="description" content="题目给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。
+    <meta name="description" content="题目
+给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。
 返回仅包含 1 的最长（连续）子数组的长度。">
   
-  <meta name="description" content="题目给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。">
+  <meta name="description" content="题目 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1004.最大连续1的个数">
 <meta property="og:url" content="http://example.com/2021/02/20/1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/index.html">
 <meta property="og:site_name" content="山猪的小站">
-<meta property="og:description" content="题目给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。">
+<meta property="og:description" content="题目 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-20T12:09:23.000Z">
 <meta property="article:modified_time" content="2021-06-12T04:41:45.124Z">
@@ -78,27 +79,23 @@
   
   <div class="entry">
     
-      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。</p>
-<p>返回仅包含 1 的最长（连续）子数组的长度。</p>
+      <h3 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h3>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x7531;&#x82E5;&#x5E72; 0 &#x548C; 1 &#x7EC4;&#x6210;&#x7684;&#x6570;&#x7EC4; A&#xFF0C;&#x6211;&#x4EEC;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x5C06; K &#x4E2A;&#x503C;&#x4ECE; 0 &#x53D8;&#x6210; 1 &#x3002;</p>
+<p>&#x8FD4;&#x56DE;&#x4EC5;&#x5305;&#x542B; 1 &#x7684;&#x6700;&#x957F;&#xFF08;&#x8FDE;&#x7EED;&#xFF09;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#x3002;</p>
 <span id="more"></span>
+<p>&#x793A;&#x4F8B; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x8F93;&#x5165;&#xFF1A;A = [1,1,1,0,0,0,1,1,1,1,0], K = 2</span><br><span class="line">&#x8F93;&#x51FA;&#xFF1A;6</span><br><span class="line">&#x89E3;&#x91CA;&#xFF1A; </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">&#x7C97;&#x4F53;&#x6570;&#x5B57;&#x4ECE; 0 &#x7FFB;&#x8F6C;&#x5230; 1&#xFF0C;&#x6700;&#x957F;&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x4E3A; 6&#x3002;</span><br></pre></td></tr></table></figure></p>
+<p>&#x63D0;&#x793A; 1. 1 &lt;= A.length &lt;= 20000 2. 0 &lt;= K &lt;= A.length 3. A[i] &#x4E3A; 0 &#x6216; 1</p>
+<h3 id="&#x9898;&#x89E3;">&#x9898;&#x89E3;</h3>
+<ol type="1">
+<li>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x6BCF;&#x6B21;&#x79FB;&#x52A8;right&#x6307;&#x9488;&#x65F6;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x503C;&#x662F;&#x5426;&#x4E3A;1
+<ol type="1">
+<li>&#x82E5;&#x5F53;&#x524D;&#x503C;&#x4E3A;1&#xFF0C;&#x66F4;&#x65B0;&#x6700;&#x5927;&#x957F;&#x5EA6;</li>
+<li>&#x82E5;&#x5F53;&#x524D;&#x503C;&#x4E3A;0&#xFF0C;&#x5224;&#x65AD;K&#x7684;&#x503C;&#xFF0C;&#x82E5;K&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x5219;&#x66F4;&#x65B0;K&#x503C;&#x548C;&#x6700;&#x5927;&#x957F;&#x5EA6;&#xFF1B;&#x82E5;K&#x503C;&#x4E3A;0&#xFF0C;&#x5219;&#x66F4;&#x65B0;&#x5DE6;&#x6307;&#x9488;left</li>
+</ol></li>
+</ol>
+<h4 id="&#x53C2;&#x8003;&#x4EE3;&#x7801;">&#x53C2;&#x8003;&#x4EE3;&#x7801;</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestOnes</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>{</span><br><span class="line">      <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> maxLen = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(right &lt; A.length) {</span><br><span class="line">        <span class="keyword">if</span>(A[right] == <span class="number">0</span>) {</span><br><span class="line">          <span class="keyword">if</span>(K == <span class="number">0</span>) {</span><br><span class="line">            <span class="comment">// &#x59CB;&#x7EC8;&#x4FDD;&#x6301;&#x7A97;&#x53E3;&#x5185;&#x53EA;&#x6709;K&#x4E2A;0</span></span><br><span class="line">            <span class="keyword">while</span>(A[left++] == <span class="number">1</span>);</span><br><span class="line">          } <span class="keyword">else</span> {</span><br><span class="line">            K--;</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        maxLen = Math.max(maxLen, right - left + <span class="number">1</span>);</span><br><span class="line">        right++;</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">return</span> maxLen;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-<p>示例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1,1,1,0,0,0,1,1,1,1,0], K = 2</span><br><span class="line">输出：6</span><br><span class="line">解释： </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 6。</span><br></pre></td></tr></table></figure>
-
-<p>提示</p>
-<ol>
-<li>1 &lt;= A.length &lt;= 20000</li>
-<li>0 &lt;= K &lt;= A.length</li>
-<li>A[i] 为 0 或 1</li>
-</ol>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
-<li>滑动窗口，每次移动right指针时判断当前值是否为1<ol>
-<li>若当前值为1，更新最大长度</li>
-<li>若当前值为0，判断K的值，若K值大于0，则更新K值和最大长度；若K值为0，则更新左指针left</li>
-</ol>
-</li>
-</ol>
-<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestOnes</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> maxLen = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(right &lt; A.length) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[right] == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span>(K == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 始终保持窗口内只有K个0</span></span><br><span class="line">            <span class="keyword">while</span>(A[left++] == <span class="number">1</span>);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            K--;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxLen = Math.max(maxLen, right - left + <span class="number">1</span>);</span><br><span class="line">        right++;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> maxLen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
   </div>
   <footer>

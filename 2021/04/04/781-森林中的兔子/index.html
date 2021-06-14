@@ -10,15 +10,16 @@
     <meta name="author" content="John Doe">
   
   
-    <meta name="description" content="题目森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。
+    <meta name="description" content="题目
+森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。
 返回森林中兔子的最少数量。">
   
-  <meta name="description" content="题目森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。 返回森林中兔子的最少数量。">
+  <meta name="description" content="题目 森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。 返回森林中兔子的最少数量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="781.森林中的兔子">
 <meta property="og:url" content="http://example.com/2021/04/04/781-%E6%A3%AE%E6%9E%97%E4%B8%AD%E7%9A%84%E5%85%94%E5%AD%90/index.html">
 <meta property="og:site_name" content="山猪的小站">
-<meta property="og:description" content="题目森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。 返回森林中兔子的最少数量。">
+<meta property="og:description" content="题目 森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。 返回森林中兔子的最少数量。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-04T14:39:09.000Z">
 <meta property="article:modified_time" content="2021-06-12T04:41:45.137Z">
@@ -78,33 +79,28 @@
   
   <div class="entry">
     
-      <h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。</p>
-<p>返回森林中兔子的最少数量。</p>
-<span id="more"></span>
-
-<p>示例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: answers = [1, 1, 2]</span><br><span class="line">输出: 5</span><br><span class="line">解释:</span><br><span class="line">两只回答了 &quot;1&quot; 的兔子可能有相同的颜色，设为红色。</span><br><span class="line">之后回答了 &quot;2&quot; 的兔子不会是红色，否则他们的回答会相互矛盾。</span><br><span class="line">设回答了 &quot;2&quot; 的兔子为蓝色。</span><br><span class="line">此外，森林中还应有另外 2 只蓝色兔子的回答没有包含在数组中。</span><br><span class="line">因此森林中兔子的最少数量是 5: 3 只回答的和 2 只没有回答的。</span><br></pre></td></tr></table></figure>
-
-<p>说明</p>
-<ol>
-<li>answers 的长度最大为1000。</li>
-<li>answers[i] 是在 [0, 999] 范围内的整数</li>
+      <h4 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h4>
+<p>&#x68EE;&#x6797;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x5154;&#x5B50;&#x90FD;&#x6709;&#x989C;&#x8272;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x4E9B;&#x5154;&#x5B50;&#xFF08;&#x53EF;&#x80FD;&#x662F;&#x5168;&#x90E8;&#xFF09;&#x544A;&#x8BC9;&#x4F60;&#x8FD8;&#x6709;&#x591A;&#x5C11;&#x5176;&#x4ED6;&#x7684;&#x5154;&#x5B50;&#x548C;&#x81EA;&#x5DF1;&#x6709;&#x76F8;&#x540C;&#x7684;&#x989C;&#x8272;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E9B;&#x56DE;&#x7B54;&#x653E;&#x5728; answers &#x6570;&#x7EC4;&#x91CC;&#x3002;</p>
+<p>&#x8FD4;&#x56DE;&#x68EE;&#x6797;&#x4E2D;&#x5154;&#x5B50;&#x7684;&#x6700;&#x5C11;&#x6570;&#x91CF;&#x3002; <span id="more"></span></p>
+<p>&#x793A;&#x4F8B; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x8F93;&#x5165;: answers = [1, 1, 2]</span><br><span class="line">&#x8F93;&#x51FA;: 5</span><br><span class="line">&#x89E3;&#x91CA;:</span><br><span class="line">&#x4E24;&#x53EA;&#x56DE;&#x7B54;&#x4E86; &quot;1&quot; &#x7684;&#x5154;&#x5B50;&#x53EF;&#x80FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x8BBE;&#x4E3A;&#x7EA2;&#x8272;&#x3002;</span><br><span class="line">&#x4E4B;&#x540E;&#x56DE;&#x7B54;&#x4E86; &quot;2&quot; &#x7684;&#x5154;&#x5B50;&#x4E0D;&#x4F1A;&#x662F;&#x7EA2;&#x8272;&#xFF0C;&#x5426;&#x5219;&#x4ED6;&#x4EEC;&#x7684;&#x56DE;&#x7B54;&#x4F1A;&#x76F8;&#x4E92;&#x77DB;&#x76FE;&#x3002;</span><br><span class="line">&#x8BBE;&#x56DE;&#x7B54;&#x4E86; &quot;2&quot; &#x7684;&#x5154;&#x5B50;&#x4E3A;&#x84DD;&#x8272;&#x3002;</span><br><span class="line">&#x6B64;&#x5916;&#xFF0C;&#x68EE;&#x6797;&#x4E2D;&#x8FD8;&#x5E94;&#x6709;&#x53E6;&#x5916; 2 &#x53EA;&#x84DD;&#x8272;&#x5154;&#x5B50;&#x7684;&#x56DE;&#x7B54;&#x6CA1;&#x6709;&#x5305;&#x542B;&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x3002;</span><br><span class="line">&#x56E0;&#x6B64;&#x68EE;&#x6797;&#x4E2D;&#x5154;&#x5B50;&#x7684;&#x6700;&#x5C11;&#x6570;&#x91CF;&#x662F; 5: 3 &#x53EA;&#x56DE;&#x7B54;&#x7684;&#x548C; 2 &#x53EA;&#x6CA1;&#x6709;&#x56DE;&#x7B54;&#x7684;&#x3002;</span><br></pre></td></tr></table></figure></p>
+<p>&#x8BF4;&#x660E; 1. answers &#x7684;&#x957F;&#x5EA6;&#x6700;&#x5927;&#x4E3A;1000&#x3002; 2. answers[i] &#x662F;&#x5728; [0, 999] &#x8303;&#x56F4;&#x5185;&#x7684;&#x6574;&#x6570;</p>
+<h4 id="&#x9898;&#x89E3;">&#x9898;&#x89E3;</h4>
+<ol type="1">
+<li>&#x540C;&#x4E00;&#x79CD;&#x989C;&#x8272;&#x7684;&#x5154;&#x5B50;&#x56DE;&#x7B54;&#x4E00;&#x5B9A;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x662F;<strong>&#x56DE;&#x7B54;&#x4E00;&#x6837;&#x7684;&#x5154;&#x5B50;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x4E00;&#x79CD;&#x989C;&#x8272;</strong></li>
+<li>&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x503C;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;
+<ol type="1">
+<li>&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#xFF0C;&#x503C;&#x4E3A;others&#x7684;&#x5143;&#x7D20;&#x53EA;&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#xFF1A;&#x8868;&#x793A;&#x9664;&#x81EA;&#x8EAB;&#x5916;&#x4E0E;&#x5176;&#x989C;&#x8272;&#x76F8;&#x540C;&#x7684;&#x5154;&#x5B50;&#x7684;&#x6570;&#x76EE;&#x3002;&#x5373;&#xFF1A;&#x8BE5;&#x989C;&#x8272;&#x7684;&#x5154;&#x5B50;&#x4E00;&#x79CD;&#x6709;others+1&#x53EA;</li>
+<li>&#x51FA;&#x73B0;&#x591A;&#x6B21;&#xFF0C;&#x503C;&#x4E3A;others&#x7684;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x4E86;count&#x6B21;&#xFF1A;</li>
+<li>&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x67D0;&#x79CD;&#x989C;&#x8272;&#x7684;&#x5154;&#x5B50;&#x4E00;&#x5171;&#x6709;all&#x53EA;&#xFF0C;&#x5154;&#x5B50;&#x56DE;&#x7B54;&#x7B54;&#x6848;&#x7684;&#x6570;&#x503C;&#x662F;others&#x3002;&#x4E24;&#x8005;&#x6EE1;&#x8DB3;&#xFF1A;all = others + 1</li>
+<li>&#x4F46;&#x662F;&#x6570;&#x7EC4;&#x5185;&#x56DE;&#x7B54;others&#x7684;&#x5154;&#x5B50;&#x6570;&#x91CF;&#x4E3A;count
+<ol type="1">
+<li>count &lt;= others + 1&#xFF1A;&#x6B64;&#x65F6;&#x8868;&#x660E;&#x8BE5;&#x989C;&#x8272;&#x7684;&#x5154;&#x5B50;&#x6709;&#x7684;&#x6CA1;&#x6709;&#x56DE;&#x7B54;&#x3002;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x3010;&#x6700;&#x5C11;&#x7684;&#x5154;&#x5B50;&#x6570;&#x91CF;&#x3011;&#x53EF;&#x4EE5;&#x5047;&#x5B9A;&#x8FD9;count&#x53EA;&#x5154;&#x5B50;&#x4E3A;&#x540C;&#x4E00;&#x79CD;&#x989C;&#x8272;</li>
+<li>count &gt; others + 1&#xFF1A;&#x82E5;&#x4E00;&#x79CD;&#x989C;&#x8272;&#x7684;&#x5154;&#x5B50;&#x5168;&#x90E8;&#x56DE;&#x7B54;&#xFF0C;&#x5219;count&#x5E94;&#x8BE5;&#x4E3A;others+1.&#x6B64;&#x65F6;count&gt;others+1&#x8868;&#x660E;&#x81F3;&#x5C11;&#x6709;&#x4E24;&#x79CD;&#x989C;&#x8272;&#x7684;&#x5154;&#x5B50;&#x56DE;&#x7B54;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x3010;&#x6700;&#x5C11;&#x5154;&#x5B50;&#x6570;&#x91CF;&#x3011;&#xFF0C;&#x6211;&#x4EEC;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x8BA9;&#x6BCF;&#x4E00;&#x79CD;&#x5154;&#x5B50;&#x7684;&#x6570;&#x91CF;&#x8FBE;&#x5230;&#x5176;&#x4E0A;&#x9650;&#xFF1A;others+1</li>
+</ol></li>
+</ol></li>
 </ol>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><ol>
-<li>同一种颜色的兔子回答一定一样，但是<strong>回答一样的兔子不一定是一种颜色</strong></li>
-<li>数组中的值可能出现一次或多次<ol>
-<li>出现一次，值为others的元素只出现一次：表示除自身外与其颜色相同的兔子的数目。即：该颜色的兔子一种有others+1只</li>
-<li>出现多次，值为others的元素出现了count次：</li>
-<li>我们假设某种颜色的兔子一共有all只，兔子回答答案的数值是others。两者满足：all = others + 1</li>
-<li>但是数组内回答others的兔子数量为count<ol>
-<li>count &lt;= others + 1：此时表明该颜色的兔子有的没有回答。为了达到【最少的兔子数量】可以假定这count只兔子为同一种颜色</li>
-<li>count &gt; others + 1：若一种颜色的兔子全部回答，则count应该为others+1.此时count&gt;others+1表明至少有两种颜色的兔子回答了相同的结果。为了达到【最少兔子数量】，我们尽可能的让每一种兔子的数量达到其上限：others+1</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h5 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numRabbits</span><span class="params">(<span class="keyword">int</span>[] answers)</span> </span>&#123;</span><br><span class="line">      Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; answers.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = map.getOrDefault(answers[i], <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">        map.put(answers[i], val);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> key : map.ketSet()) &#123;</span><br><span class="line">        <span class="keyword">if</span>(key == <span class="number">0</span>) &#123;</span><br><span class="line">          res += map.get(key);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(map.get(key) % (key + <span class="number">1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">          res += map.get(key) / (key + <span class="number">1</span>) * (key + <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          res += (map.get(key) / (key + <span class="number">1</span>) + <span class="number">1</span>) * (key + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="&#x53C2;&#x8003;&#x4EE3;&#x7801;">&#x53C2;&#x8003;&#x4EE3;&#x7801;</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numRabbits</span><span class="params">(<span class="keyword">int</span>[] answers)</span> </span>{</span><br><span class="line">      Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; answers.length; i++) {</span><br><span class="line">        <span class="keyword">int</span> val = map.getOrDefault(answers[i], <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">        map.put(answers[i], val);</span><br><span class="line">      }</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> key : map.ketSet()) {</span><br><span class="line">        <span class="keyword">if</span>(key == <span class="number">0</span>) {</span><br><span class="line">          res += map.get(key);</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span>(map.get(key) % (key + <span class="number">1</span>) == <span class="number">0</span>) {</span><br><span class="line">          res += map.get(key) / (key + <span class="number">1</span>) * (key + <span class="number">1</span>);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">          res += (map.get(key) / (key + <span class="number">1</span>) + <span class="number">1</span>) * (key + <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">      </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
     
   </div>
